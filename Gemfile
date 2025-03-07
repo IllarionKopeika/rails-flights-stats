@@ -36,6 +36,8 @@ gem "font-awesome-sass", "~> 6.1"
 
 gem "autoprefixer-rails"
 
+gem "httparty"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 

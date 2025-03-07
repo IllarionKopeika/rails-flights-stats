@@ -1,0 +1,10 @@
+<%= turbo_frame_tag 'flight_result' do %>
+  <div id='flight_result'>
+    <h3>Search result</h3>
+    <p>Flight number: <%= @flight_data[:flight_number] %></p>
+    <p>Departure airport: <%= @flight_data[:departure_airport] %></p>
+    <p>Departure time: <%= @flight_data[:departure_time] %></p>
+    <p>Arrival airport: <%= @flight_data[:arrival_airport] %></p>
+    <p>Arrival time: <%= @flight_data[:arrival_time] %></p>
+  </div>
+<% end %>

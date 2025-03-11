@@ -1,0 +1,17 @@
+ru:
+  sessions:
+    create:
+      login_success: Вы вошли в систему!
+      login_fail: Неверный логин и/или пароль!
+      try_later: Подозрительная активность, попробуйте войти позже!
+    destroy:
+      logout_success: Вы вышли из системы!
+    new:
+      email: Электронная почта
+      password: Пароль
+      login: Войти
+      forgot_password: Забыли пароль?
+  shared:
+    navbar:
+      hello: Привет
+      logout: Выйти

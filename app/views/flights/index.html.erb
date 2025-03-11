@@ -1,7 +1,5 @@
 <h1>Search flights</h1>
 
-<%= link_to 'Log out', session_path, method: :delete, data: { turbo_method: :delete }, class: 'btn btn-danger mb-3' %>
-
 <%= form_with url: search_flights_path, method: :get, id: 'flight-search-form', data: { turbo_frame: 'flight_result' } do |form| %>
   <div>
     <%= form.label :carrier, 'Carrier' %>

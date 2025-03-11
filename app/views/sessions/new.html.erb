@@ -1,8 +1,12 @@
-<%= form_with url: session_path do |f| %>
-  <%= f.email_field :email_address, required: true, autofocus: true, autocomplete: 'username', placeholder: 'Enter your email address', value: params[:email_address] %><br>
-  <%= f.password_field :password, required: true, autocomplete: 'current-password', placeholder: 'Enter your password', maxlength: 72 %><br>
-  <%= f.submit 'Sign in' %>
-<% end %>
-<br>
+<div class="row justify-content-center">
+  <div class="col-8">
+    <%= form_with url: session_path do |f| %>
+      <%= f.email_field :email_address, autofocus: true, autocomplete: 'username', placeholder: t('.email'), value: params[:email_address] %><br>
+      <%= f.password_field :password, autocomplete: 'current-password', placeholder: t('.password') %><br>
+      <%= f.submit t('.login') %>
+    <% end %>
+    <br>
 
-<%= link_to 'Forgot password', new_password_path %>
+    <%= link_to t('.forgot_password'), new_password_path %>
+  </div>
+</div>

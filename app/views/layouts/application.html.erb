@@ -22,12 +22,12 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
   </head>
 
-  <body class="vh-100 bg-dark text-light position-relative">
-    <div class="position-fixed top-0 start-0 w-100 h-100" style="background: url('<%= asset_path("bg.jpg") %>') no-repeat center center fixed; background-size: cover; opacity: 0.5; z-index: -1;">
-    </div>
-    <div class="container-fluid">
+  <body>
+    <%= render 'shared/navbar' %>
+    <div class="container my-5">
       <%= render 'shared/flash_message' %>
       <%= yield %>
     </div>

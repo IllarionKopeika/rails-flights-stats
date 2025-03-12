@@ -1,12 +1,17 @@
 <div class="row justify-content-center">
-  <div class="col-8">
-    <%= form_with url: session_path do |f| %>
-      <%= f.email_field :email_address, autofocus: true, autocomplete: 'username', placeholder: t('.email'), value: params[:email_address] %><br>
-      <%= f.password_field :password, autocomplete: 'current-password', placeholder: t('.password') %><br>
-      <%= f.submit t('.login') %>
-    <% end %>
-    <br>
+  <div class="col-6">
+    <div class="custom-form">
+      <%= form_with url: session_path do |f| %>
+        <div class="mb-3">
+          <%= f.email_field :email_address, autofocus: true, autocomplete: 'username', placeholder: t('.email'), value: params[:email_address], class: 'form-control' %>
+        </div>
+        <div class="mb-3">
+          <%= f.password_field :password, autocomplete: 'current-password', placeholder: t('.password'), class: 'form-control' %>
+        </div>
+        <%= f.submit t('.login'), class: 'btn btn-primary w-100 mb-3' %>
+      <% end %>
 
-    <%= link_to t('.forgot_password'), new_password_path %>
+      <%= link_to t('.forgot_password'), new_password_path %>
+    </div>
   </div>
 </div>

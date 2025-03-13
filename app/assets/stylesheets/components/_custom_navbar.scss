@@ -18,12 +18,12 @@
     }
   }
   .dropdown-menu {
-    background: white;
+    background: rgba(white,0.7);
     border-radius: 5px;
     border: 1px solid $primary;
     li a {
       text-align: center;
-      font-size: 18px;
+      font-size: 16px;
       color: $primary;
       font-weight: normal;
     }

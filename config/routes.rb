@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     # passwords
     resources :passwords, param: :token
+    # get 'reset_password', to: 'passwords#new', as: 'reset_password', param: :token
 
     #users
     resources :users, only: :create

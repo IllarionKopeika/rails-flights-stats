@@ -6,12 +6,12 @@
 
       <%= form_with url: session_path do |f| %>
         <div class="mb-3">
-          <%= f.email_field :email_address, autofocus: true, autocomplete: 'username', placeholder: t('.email'), value: params[:email_address], class: 'form-control' %>
+          <%= f.email_field :email_address, placeholder: t('.email_address'), value: params[:email_address], class: 'form-control' %>
         </div>
         <div class="mb-3">
-          <%= f.password_field :password, autocomplete: 'current-password', placeholder: t('.password'), class: 'form-control' %>
+          <%= f.password_field :password, placeholder: t('.password'), class: 'form-control' %>
         </div>
-        <%= f.submit t('.login'), class: 'btn btn-primary w-100 mb-3' %>
+        <%= f.submit t('.log_in'), class: 'btn btn-primary w-100 mb-3' %>
       <% end %>
 
       <div class="links d-flex">

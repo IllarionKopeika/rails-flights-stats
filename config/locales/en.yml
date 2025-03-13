@@ -1,26 +1,37 @@
 en:
+  passwords:
+    new:
+      title: Password reset
+      email_address: Email
+      send_instructions: Send instructions
+      log_in: Log in
+      sign_up: Sign up
+    create:
+      invalid_email: Email address can't be blank!
+      instruction_sent: Password reset instructions sent (if user with that email address exists)!
   sessions:
+    new:
+      already_logged_in: You're already logged in!
+      title: Log in
+      email_address: Email
+      password: Password
+      log_in: Log in
+      forgot_password: Forgot password?
+      sign_up: Sign up
     create:
       login_success: Successfully logged in!
       login_fail: Incorrect email and/or password!
       try_later: Suspicious activity, please try to log in later!
     destroy:
       logout_success: Successfully logged out!
-    new:
-      title: Log in
-      email: Email
-      password: Password
-      login: Log in
-      forgot_password: Forgot password?
-      sign_up: Sign up
   shared:
     navbar:
       hello: Hello
-      logout: Log out
+      reset_password: Reset password
+      log_out: Log out
   users:
-    create:
-      signup_success: Successfully signed up. Please log in!
     new:
+      already_signed_up: You're already signed up!
       title: Sign up
       email_address: Email address
       name: Name
@@ -28,4 +39,6 @@ en:
       password_confirmation: Password confirmation
       sign_up: Sign up
       forgot_password: Forgot password?
-      login: Log in
+      log_in: Log in
+    create:
+      signup_success: Successfully signed up. Please log in!

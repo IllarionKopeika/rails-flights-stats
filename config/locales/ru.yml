@@ -1,26 +1,37 @@
 ru:
+  passwords:
+    new:
+      title: Сброс пароля
+      email_address: Электронная почта
+      send_instructions: Отправить инструкцию
+      log_in: Войти
+      sign_up: Зарегистрироваться
+    create:
+      invalid_email: Электронная почта не может быть пустой!
+      instruction_sent: Инструкция отправлена (если пользователь с такой электронной почтой существует)!
   sessions:
+    new:
+      already_logged_in: Вы уже вошли в систему!
+      title: Вход
+      email_address: Электронная почта
+      password: Пароль
+      log_in: Войти
+      forgot_password: Забыли пароль?
+      sign_up: Зарегистрироваться
     create:
       login_success: Вы вошли в систему!
       login_fail: Неверный логин и/или пароль!
       try_later: Подозрительная активность, попробуйте войти позже!
     destroy:
       logout_success: Вы вышли из системы!
-    new:
-      title: Вход
-      email: Электронная почта
-      password: Пароль
-      login: Войти
-      forgot_password: Забыли пароль?
-      sign_up: Зарегистрироваться
   shared:
     navbar:
       hello: Привет
-      logout: Выйти
+      reset_password: Сбросить пароль
+      log_out: Выйти
   users:
-    create:
-      signup_success: Регистрация прошла успешно. Пожалуйста, войдите в систему!
     new:
+      already_signed_up: Вы уже зарегистрированы!
       title: Регистрация
       email_address: Электронная почта
       name: Имя
@@ -29,3 +40,5 @@ ru:
       sign_up: Зарегистрироваться
       forgot_password: Забыли пароль?
       log_in: Войти
+    create:
+      signup_success: Регистрация прошла успешно. Пожалуйста, войдите в систему!

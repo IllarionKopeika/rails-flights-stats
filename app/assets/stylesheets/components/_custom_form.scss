@@ -10,4 +10,12 @@
   .btn {
     font-size: 16px;
   }
+  .links {
+    justify-content: space-around;
+    a {
+      color: $primary;
+      font-size: 16px;
+      text-decoration: none;
+    }
+  }
 }

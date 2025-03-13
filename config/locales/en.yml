@@ -7,11 +7,25 @@ en:
     destroy:
       logout_success: Successfully logged out!
     new:
+      title: Log in
       email: Email
       password: Password
       login: Log in
       forgot_password: Forgot password?
+      sign_up: Sign up
   shared:
     navbar:
       hello: Hello
       logout: Log out
+  users:
+    create:
+      signup_success: Successfully signed up. Please log in!
+    new:
+      title: Sign up
+      email_address: Email address
+      name: Name
+      password: Password
+      password_confirmation: Password confirmation
+      sign_up: Sign up
+      forgot_password: Forgot password?
+      login: Log in

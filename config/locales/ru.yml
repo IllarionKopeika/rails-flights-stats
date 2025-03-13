@@ -7,11 +7,25 @@ ru:
     destroy:
       logout_success: Вы вышли из системы!
     new:
+      title: Вход
       email: Электронная почта
       password: Пароль
       login: Войти
       forgot_password: Забыли пароль?
+      sign_up: Зарегистрироваться
   shared:
     navbar:
       hello: Привет
       logout: Выйти
+  users:
+    create:
+      signup_success: Регистрация прошла успешно. Пожалуйста, войдите в систему!
+    new:
+      title: Регистрация
+      email_address: Электронная почта
+      name: Имя
+      password: Пароль
+      password_confirmation: Подтверждение пароля
+      sign_up: Зарегистрироваться
+      forgot_password: Забыли пароль?
+      log_in: Войти

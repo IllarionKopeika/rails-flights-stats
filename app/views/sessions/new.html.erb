@@ -1,6 +1,9 @@
 <div class="row justify-content-center">
   <div class="col-6">
     <div class="custom-form">
+
+      <h1 class="text-center mb-3"><%= t('.title') %></h1>
+
       <%= form_with url: session_path do |f| %>
         <div class="mb-3">
           <%= f.email_field :email_address, autofocus: true, autocomplete: 'username', placeholder: t('.email'), value: params[:email_address], class: 'form-control' %>
@@ -11,7 +14,11 @@
         <%= f.submit t('.login'), class: 'btn btn-primary w-100 mb-3' %>
       <% end %>
 
-      <%= link_to t('.forgot_password'), new_password_path %>
+      <div class="links d-flex">
+        <%= link_to t('.forgot_password'), new_password_path %>
+        <%= link_to t('.sign_up'), sign_up_path %>
+      </div>
+
     </div>
   </div>
 </div>

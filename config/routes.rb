@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     get 'login', to: 'sessions#new', as: 'login'
 
     # passwords
-    resources :passwords, param: :token
-    # get 'reset_password', to: 'passwords#new', as: 'reset_password', param: :token
+    resources :passwords, param: :token, except: [ :new ]
+    get 'reset_password', to: 'passwords#new', as: 'reset_password'
 
     #users
     resources :users, only: :create

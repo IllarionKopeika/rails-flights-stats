@@ -6,7 +6,7 @@
 
       <%= form_with url: passwords_path do |f| %>
         <div class="mb-3">
-          <%= f.email_field :email_address, autofocus: true, autocomplete: "username", placeholder: t('.email_address'), value: params[:email_address], class: 'form-control' %>
+          <%= f.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: t('.email_address'), value: params[:email_address], class: 'form-control' %>
         </div>
 
         <%= f.submit t('.send_instructions'), class: 'btn btn-primary w-100 mb-3' %>

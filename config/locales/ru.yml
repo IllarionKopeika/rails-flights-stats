@@ -9,6 +9,14 @@ ru:
     create:
       invalid_email: Электронная почта не может быть пустой!
       instruction_sent: Инструкция отправлена (если пользователь с такой электронной почтой существует)!
+    change_password:
+      title: Изменить пароль
+      current_password: Текущий пароль
+      new_password: Новый пароль
+      password_confirmation: Подтверждение пароля
+      change_password: Изменить пароль
+    update_password:
+      change_password_success: Пароль успешно изменен!
   sessions:
     new:
       already_logged_in: Вы уже вошли в систему!
@@ -27,9 +35,12 @@ ru:
   shared:
     navbar:
       hello: Привет
-      reset_password: Сбросить пароль
+      profile: Мой профиль
+      change_password: Изменить пароль
       log_out: Выйти
   users:
+    show:
+      title: Мой профиль
     new:
       already_signed_up: Вы уже зарегистрированы!
       title: Регистрация

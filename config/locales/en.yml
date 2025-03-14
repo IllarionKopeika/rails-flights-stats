@@ -9,6 +9,14 @@ en:
     create:
       invalid_email: Email address can't be blank!
       instruction_sent: Password reset instructions sent (if user with that email address exists)!
+    change_password:
+      title: Change password
+      current_password: Current password
+      new_password: New password
+      password_confirmation: Password confirmation
+      change_password: Change password
+    update_password:
+      change_password_success: Password has been successfully changed!
   sessions:
     new:
       already_logged_in: You're already logged in!
@@ -27,9 +35,12 @@ en:
   shared:
     navbar:
       hello: Hello
-      reset_password: Reset password
+      profile: Profile
+      change_password: Change password
       log_out: Log out
   users:
+    show:
+      title: Profile
     new:
       already_signed_up: You're already signed up!
       title: Sign up

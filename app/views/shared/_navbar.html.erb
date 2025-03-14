@@ -13,6 +13,10 @@
         <li class="nav-item dropdown-center me-3">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><%= t('.hello') %>, <%= Current.user.name.present? ? Current.user.name : Current.user.email_address %>!</a>
           <ul class="dropdown-menu">
+            <li><%= link_to t('.profile'), profile_path, class: 'nav-link' %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to t('.change_password'), change_password_path, class: 'nav-link' %></li>
+            <li><hr class="dropdown-divider"></li>
             <li><%= link_to t('.log_out'), session_path, method: :delete, data: { turbo_method: :delete }, class: 'nav-link' %></li>
           </ul>
         </li>

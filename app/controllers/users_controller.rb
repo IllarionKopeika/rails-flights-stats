@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
 
+  def show
+    @user = Current.user
+  end
+
   def new
     if authenticated?
       flash[:info] = t('.already_signed_up')

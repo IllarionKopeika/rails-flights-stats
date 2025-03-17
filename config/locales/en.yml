@@ -14,15 +14,6 @@ en:
       invalid: Current password is incorrect
       taken_email_address: is already taken
   passwords:
-    new:
-      title: Password reset
-      email_address: Email
-      send_instructions: Send instructions
-      log_in: Log in
-      sign_up: Sign up
-    create:
-      invalid_email: Email address can't be blank!
-      instruction_sent: Password reset instructions sent (if user with that email address exists)!
     change_password:
       title: Change password
       current_password: Current password
@@ -31,6 +22,31 @@ en:
       change_password: Change password
     update_password:
       change_password_success: Password has been successfully changed!
+  password_resets:
+    new:
+      title: Forgot password?
+      email_address: Email address
+      send_instructions: Send instructions
+      log_in: Log in
+      sign_up: Sign up
+    create:
+      invalid_email: Email address can't be blank!
+    instructions:
+      title: Instructions
+      sentence_one: Reset password link was sent to your email address.
+      sentence_two: Follow the link in order to reset your password.
+      home_page: Home page
+    edit:
+      title: New password
+      password: Password
+      password_confirmation: Password confirmation
+      confirm: Confirm
+      forgot_password: Error - please try again!
+    update:
+      password_reset_success: Password has been successfully reset!
+  # password_mailer:
+  #   password_reset:
+  #     reset_password: Reset password
   sessions:
     new:
       already_logged_in: You're already logged in!

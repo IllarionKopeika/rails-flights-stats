@@ -9,6 +9,13 @@ Rails.application.routes.draw do
     get 'change_password', to: 'passwords#change_password', as: 'change_password'
     patch 'update_password', to: 'passwords#update_password', as: 'update_password'
 
+    # password resets
+    resources :password_resets, only: :create
+    get 'forgot_password', to: 'password_resets#new', as: 'forgot_password'
+    get 'instructions', to: 'password_resets#instructions', as: 'instructions'
+    get 'password_resets/edit/:token', to: 'password_resets#edit', as: 'edit_password_reset'
+    patch 'password_resets/:token', to: 'password_resets#update', as: 'password_reset'
+
     #users
     resources :users, only: :create
     get 'sign_up', to: 'users#new', as: 'sign_up'

@@ -14,15 +14,6 @@ ru:
       invalid: Текущий пароль неверный
       taken_email_address: уже используется
   passwords:
-    new:
-      title: Сброс пароля
-      email_address: Электронная почта
-      send_instructions: Отправить инструкцию
-      log_in: Войти
-      sign_up: Зарегистрироваться
-    create:
-      invalid_email: Электронная почта не может быть пустой!
-      instruction_sent: Инструкция отправлена (если пользователь с такой электронной почтой существует)!
     change_password:
       title: Изменить пароль
       current_password: Текущий пароль
@@ -31,6 +22,31 @@ ru:
       change_password: Изменить пароль
     update_password:
       change_password_success: Пароль успешно изменен!
+  password_resets:
+    new:
+      title: Забыли пароль?
+      email_address: Электронная почта
+      send_instructions: Отправить инструкцию
+      log_in: Войти
+      sign_up: Зарегистрироваться
+    create:
+      invalid_email: Электронная почта не может быть пустой!
+    instructions:
+      title: Инструкция
+      sentence_one: Ссылка на восстановление пароля была отпавлена на адрес вашей электронной почты.
+      sentence_two: Перейдите по ссылке для восстановления пароля.
+      home_page: Главная страница
+    edit:
+      title: Новый пароль
+      password: Пароль
+      password_confirmation: Подтверждение пароля
+      confirm: Подтвердить
+      invalid_token: Ошибка - попробуйте еще раз!
+    update:
+      password_reset_success: Пароль успешно восстановлен!
+  # password_mailer:
+  #   password_reset:
+  #     reset_password: Восстановить пароль
   sessions:
     new:
       already_logged_in: Вы уже вошли в систему!

@@ -1,4 +1,18 @@
 en:
+  activerecord:
+    attributes:
+      user:
+        email_address: Email address
+        password: Password
+        password_challenge: ''
+        password_confirmation: ''
+  errors:
+    messages:
+      blank: can't be blank
+      blank_email_address: can't be blank
+      confirmation: Passwords don't match
+      invalid: Current password is incorrect
+      taken_email_address: is already taken
   passwords:
     new:
       title: Password reset

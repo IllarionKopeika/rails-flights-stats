@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /ru|en/ do
     # sessions
-    resource :session, except: :new
+    resource :session, only: :create
     get 'login', to: 'sessions#new', as: 'login'
+    delete 'logout', to: 'sessions#destroy', as: 'logout'
 
     # passwords
-    resources :passwords, param: :token
     get 'change_password', to: 'passwords#change_password', as: 'change_password'
     patch 'update_password', to: 'passwords#update_password', as: 'update_password'
 

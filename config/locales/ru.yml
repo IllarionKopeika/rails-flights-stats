@@ -1,4 +1,18 @@
 ru:
+  activerecord:
+    attributes:
+      user:
+        email_address: Электронная почта
+        password: Пароль
+        password_challenge: ''
+        password_confirmation: ''
+  errors:
+    messages:
+      blank: не может быть пустым
+      blank_email_address: не может быть пустой
+      confirmation: Пароли не совпадают
+      invalid: Текущий пароль неверный
+      taken_email_address: уже используется
   passwords:
     new:
       title: Сброс пароля

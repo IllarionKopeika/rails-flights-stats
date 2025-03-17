@@ -4,6 +4,8 @@
 
       <h1 class="text-center mb-3"><%= t('.title') %></h1>
 
+      <%= render 'shared/errors', object: @user %>
+
       <%= form_with model: @user do |f| %>
         <div class="row mb-3">
           <div class="col-6">
@@ -26,7 +28,7 @@
       <% end %>
 
       <div class="links d-flex">
-        <%= link_to t('.forgot_password'), new_password_path %>
+        <%= link_to t('.forgot_password'), '#' %>
         <%= link_to t('.log_in'), login_path %>
       </div>
 

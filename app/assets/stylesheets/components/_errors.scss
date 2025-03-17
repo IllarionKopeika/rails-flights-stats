@@ -1,0 +1,12 @@
+.errors {
+  border-radius: 5px;
+  h6 {
+    color: $danger;
+  }
+  ul {
+    margin-bottom: 0;
+  }
+  li {
+    list-style-type: "❌ ";
+  }
+}

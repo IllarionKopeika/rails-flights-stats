@@ -5,11 +5,11 @@ Rails.application.routes.draw do
     get 'login', to: 'sessions#new', as: 'login'
     delete 'logout', to: 'sessions#destroy', as: 'logout'
 
-    # passwords
+    # change password
     get 'change_password', to: 'passwords#change_password', as: 'change_password'
     patch 'update_password', to: 'passwords#update_password', as: 'update_password'
 
-    # password resets
+    # reset password
     resources :password_resets, only: :create
     get 'forgot_password', to: 'password_resets#new', as: 'forgot_password'
     get 'instructions', to: 'password_resets#instructions', as: 'instructions'

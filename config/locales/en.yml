@@ -13,6 +13,13 @@ en:
       confirmation: Passwords don't match
       invalid: Current password is incorrect
       taken_email_address: is already taken
+  flights:
+    index:
+      title: Flights' search
+      carrier: Carrier
+      flight_number: Flight number
+      date: Date
+      search: Search
   passwords:
     change_password:
       title: Change password

@@ -19,8 +19,8 @@ class FlightsController < ApplicationController
   def fetch_flight_data(carrier, flight_number, date)
     url = 'https://flight-info-api.p.rapidapi.com/status'
     headers = {
-      'x-rapidapi-key' => ENV['KEY'],
-      'x-rapidapi-host' => ENV['HOST']
+      'x-rapidapi-key' => ENV['X_RAPIDAPI_KEY'],
+      'x-rapidapi-host' => ENV['X_RAPIDAPI_HOST']
     }
     params = {
       version: 'v2',

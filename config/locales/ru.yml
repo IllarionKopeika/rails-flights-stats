@@ -13,6 +13,13 @@ ru:
       confirmation: Пароли не совпадают
       invalid: Текущий пароль неверный
       taken_email_address: уже используется
+  flights:
+    index:
+      title: Поиск рейсов
+      carrier: Авиакомпания
+      flight_number: Номер рейса
+      date: Дата вылета
+      search: Поиск
   passwords:
     change_password:
       title: Изменить пароль

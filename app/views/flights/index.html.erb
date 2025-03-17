@@ -1,27 +1,30 @@
-<h1>Search flights</h1>
+<div class="row justify-content-center">
+  <div class="col-6">
+    <div class="custom-form">
 
-<%= form_with url: search_flights_path, method: :get, id: 'flight-search-form', data: { turbo_frame: 'flight_result' } do |form| %>
-  <div>
-    <%= form.label :carrier, 'Carrier' %>
-    <%= form.text_field :carrier, required: true %>
+      <h1 class="text-center mb-3"><%= t('.title') %></h1>
+
+      <%= form_with url: search_flights_path, method: :get, id: 'flight-search-form', data: { turbo_frame: 'flight_result' } do |f| %>
+          <div class="mb-3">
+            <%= f.text_field :carrier, placeholder: t('.carrier'), class: 'form-control' %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.text_field :flight_number, placeholder: t('.flight_number'), class: 'form-control' %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.date_field :date, placeholder: t('.date'), class: 'form-control' %>
+          </div>
+
+          <%= f.submit t('.search'), class: 'btn btn-primary w-100 mb-3' %>
+      <% end %>
+
+
+      <%= turbo_frame_tag 'flight_result' do %>
+        <!-- search result -->
+      <% end %>
+
+    </div>
   </div>
-
-  <div>
-    <%= form.label :flight_number, 'Flight number' %>
-    <%= form.text_field :flight_number, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :date, 'Date' %>
-    <%= form.date_field :date, required: true %>
-  </div>
-
-  <div>
-    <%= form.submit 'Search' %>
-  </div>
-<% end %>
-
-
-<%= turbo_frame_tag 'flight_result' do %>
-  <!-- Flight result -->
-<% end %>
+</div>

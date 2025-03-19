@@ -1,4 +1,5 @@
-require 'httparty'
+# require 'httparty'
+
 # puts 'create users'
 # User.create!(email_address: 'larry@test.com', password_digest: 'test', name: 'Larry')
 # User.create!(email_address: 'alisa@test.com', password_digest: 'test', name: 'Alisa')
@@ -42,17 +43,17 @@ require 'httparty'
 # Subregion.create!(name: { ru: 'Антарктида', en: 'Antarctica' }, region: Region.last)
 # puts 'done!'
 
-puts 'create countries'
-url = 'https://restcountries.com/v3.1/region/Antarctic'
-res = HTTParty.get(url)
-data = res.parsed_response
+# puts 'create countries'
+# url = 'https://restcountries.com/v3.1/subregion/Melanesia'
+# res = HTTParty.get(url)
+# data = res.parsed_response
 # puts data.size
-data.each do |country|
-  ru_name = country['translations']['rus']['common']
-  en_name = country['name']['common']
-  code = country['cca2']
-  flag_url = country['flags']['svg']
-  # puts "#{ru_name} - #{en_name} - #{code}"
-  Country.create!(name: { ru: ru_name, en: en_name }, code: code, flag_url: flag_url, visited: false, subregion: Subregion.last)
-end
-puts 'done'
+# data.each do |country|
+#   ru_name = country['translations']['rus']['common']
+#   en_name = country['name']['common']
+#   code = country['cca2']
+#   flag_url = country['flags']['svg']
+#   puts "#{ru_name} - #{en_name} - #{code}"
+#   Country.create!(name: { ru: ru_name, en: en_name }, code: code, flag_url: flag_url, visited: false, subregion: Subregion.find(24))
+# end
+# puts 'done'

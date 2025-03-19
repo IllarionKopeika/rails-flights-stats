@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_18_083334) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_19_091447) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "aircrafts", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "manufacturer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "airlines", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "logo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "airports", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.bigint "country_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_airports_on_country_id"
+  end
 
   create_table "countries", force: :cascade do |t|
     t.jsonb "name", default: {}, null: false
@@ -61,6 +86,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_18_083334) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "airports", "countries"
   add_foreign_key "countries", "subregions"
   add_foreign_key "sessions", "users"
   add_foreign_key "subregions", "regions"

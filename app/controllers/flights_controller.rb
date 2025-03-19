@@ -41,35 +41,36 @@ class FlightsController < ApplicationController
           departure_airport: flight_data[:data][0][:departure][:airport][:iata],
           departure_time: flight_data[:data][0][:departure][:time][:local],
           arrival_airport: flight_data[:data][0][:arrival][:airport][:iata],
-          arrival_time: flight_data[:data][0][:arrival][:time][:local]
+          arrival_time: flight_data[:data][0][:arrival][:time][:local],
+          status: 'Scheduled.'
         }
       else
         {
           flight_number: "#{carrier}#{flight_number}",
-          departure_airport: "N/A",
-          departure_time: "N/A",
-          arrival_airport: "N/A",
-          arrival_time: "N/A",
-          status: "No data found for this flight."
+          departure_airport: 'N/A',
+          departure_time: 'N/A',
+          arrival_airport: 'N/A',
+          arrival_time: 'N/A',
+          status: 'No data found for this flight.'
         }
       end
     else
       {
         flight_number: "#{carrier}#{flight_number}",
-        departure_airport: "N/A",
-        departure_time: "N/A",
-        arrival_airport: "N/A",
-        arrival_time: "N/A",
+        departure_airport: 'N/A',
+        departure_time: 'N/A',
+        arrival_airport: 'N/A',
+        arrival_time: 'N/A',
         status: "Error: #{response.code} - #{response.message}"
       }
     end
   rescue StandardError => e
     {
       flight_number: "#{carrier}#{flight_number}",
-      departure_airport: "N/A",
-      departure_time: "N/A",
-      arrival_airport: "N/A",
-      arrival_time: "N/A",
+      departure_airport: 'N/A',
+      departure_time: 'N/A',
+      arrival_airport: 'N/A',
+      arrival_time: 'N/A',
       status: "Error: #{e.message}"
     }
   end

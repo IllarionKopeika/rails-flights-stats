@@ -37,40 +37,54 @@ class FlightsController < ApplicationController
 
       if flight_data[:data] && flight_data[:data][0]
         {
-          flight_number: "#{flight_data[:data][0][:carrier][:iata]}#{flight_data[:data][0][:flightNumber]}",
+          flight_number: "#{flight_data[:data][0][:carrier][:iata]} #{flight_data[:data][0][:flightNumber]}",
+          departure_country_code: flight_data[:data][0][:departure][:country][:code],
           departure_airport: flight_data[:data][0][:departure][:airport][:iata],
+          departure_date: flight_data[:data][0][:departure][:date][:local],
           departure_time: flight_data[:data][0][:departure][:time][:local],
+          arrival_country_code: flight_data[:data][0][:arrival][:country][:code],
           arrival_airport: flight_data[:data][0][:arrival][:airport][:iata],
           arrival_time: flight_data[:data][0][:arrival][:time][:local],
-          status: 'Scheduled.'
+          duration: flight_data[:data][0][:elapsedTime]
         }
       else
         {
-          flight_number: "#{carrier}#{flight_number}",
+          flight_number: "#{carrier} #{flight_number}",
+          departure_country_code: 'N/A',
           departure_airport: 'N/A',
+          departure_date: 'N/A',
           departure_time: 'N/A',
+          arrival_country_code: 'N/A',
           arrival_airport: 'N/A',
           arrival_time: 'N/A',
-          status: 'No data found for this flight.'
+          duration: 'N/A'
         }
       end
     else
       {
-        flight_number: "#{carrier}#{flight_number}",
+        flight_number: "#{carrier} #{flight_number}",
+        departure_country_code: 'N/A',
         departure_airport: 'N/A',
+        departure_date: 'N/A',
         departure_time: 'N/A',
+        arrival_country_code: 'N/A',
         arrival_airport: 'N/A',
         arrival_time: 'N/A',
+        duration: 'N/A',
         status: "Error: #{response.code} - #{response.message}"
       }
     end
   rescue StandardError => e
     {
-      flight_number: "#{carrier}#{flight_number}",
+      flight_number: "#{carrier} #{flight_number}",
+      departure_country_code: 'N/A',
       departure_airport: 'N/A',
+      departure_date: 'N/A',
       departure_time: 'N/A',
+      arrival_country_code: 'N/A',
       arrival_airport: 'N/A',
       arrival_time: 'N/A',
+      duration: 'N/A',
       status: "Error: #{e.message}"
     }
   end

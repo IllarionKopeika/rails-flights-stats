@@ -14,12 +14,18 @@ en:
       invalid: Current password is incorrect
       taken_email_address: is already taken
   flights:
+    not_available: N/A
+    hours: h
+    mins: mins
+    invalid_date: Invalid date
     index:
       title: Flights' search
       carrier: Carrier
       flight_number: Flight number
       date: Date
       search: Search
+    search:
+      search_result: Search result
   passwords:
     change_password:
       title: Change password

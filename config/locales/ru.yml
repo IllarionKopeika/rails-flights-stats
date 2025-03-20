@@ -14,12 +14,18 @@ ru:
       invalid: Текущий пароль неверный
       taken_email_address: уже используется
   flights:
+    not_available: Н/Д
+    hours: ч
+    mins: мин
+    invalid_date: Некорректная дата
     index:
       title: Поиск рейсов
       carrier: Авиакомпания
       flight_number: Номер рейса
       date: Дата вылета
       search: Поиск
+    search:
+      search_result: Результат поиска
   passwords:
     change_password:
       title: Изменить пароль

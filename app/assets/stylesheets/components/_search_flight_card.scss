@@ -1,0 +1,66 @@
+.flight-card {
+  background: rgba(whitesmoke, 0.8);
+  border-radius: 25px;
+  box-shadow: 2px 2px 4px gray;
+  overflow: hidden;
+  .flight-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    .departure-info, .arrival-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      img {
+        width: 80px;
+        height: auto;
+        border-radius: 5px;
+      }
+      .airport-time-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        h4 {
+          color: $primary;
+          margin: 0;
+        }
+        p {
+          color: $secondary;
+          font-weight: 600;
+          margin: 0;
+          font-size: 14px;
+        }
+      }
+    }
+    .flight-number-duration-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      p {
+        color: $secondary;
+        font-weight: 600;
+        margin: 0;
+        text-align: center;
+        font-size: 14px;
+      }
+    }
+    i {
+      color: $primary;
+      position: absolute;
+      left: 30%;
+      animation: movePlane 7s linear infinite;
+    }
+  }
+  @keyframes movePlane {
+    0% {
+      left: 30%;
+    }
+    100% {
+      left: 65%;
+    }
+  }
+}

@@ -10,11 +10,18 @@
         </div>
       </div>
 
+      <div class="airplane-icon">
+        <i class="fa-sharp fa-solid fa-plane-departure fa-xl"></i>
+      </div>
+
       <div class="flight-number-duration-info">
+        <p><%= @flight_data[:flight_number] %></p>
         <p><%= @flight_data[:departure_date] %></p>
         <p><%= duration(@flight_data[:duration]) %></p>
-        <i class="fa-solid fa-plane"></i>
-        <p><%= @flight_data[:flight_number] %></p>
+      </div>
+
+      <div class="airplane-icon">
+        <i class="fa-sharp fa-solid fa-plane-arrival fa-xl"></i>
       </div>
 
       <div class="arrival-info">

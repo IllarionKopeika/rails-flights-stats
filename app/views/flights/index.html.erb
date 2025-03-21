@@ -14,7 +14,7 @@
           </div>
 
           <div class="mb-3">
-            <%= f.date_field :date, placeholder: t('.date'), class: 'form-control' %>
+            <%= f.date_field :date, placeholder: t('.date'), class: 'form-control', data: { controller: 'datepicker', locale: I18n.locale } %>
           </div>
 
           <%= f.submit t('.search'), class: 'btn btn-primary w-100 mb-3' %>

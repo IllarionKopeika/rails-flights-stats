@@ -38,6 +38,8 @@ gem "autoprefixer-rails"
 
 gem "httparty"
 
+gem 'rails-i18n'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 

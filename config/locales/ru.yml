@@ -1,4 +1,9 @@
 ru:
+  flight_not_found: Рейсов не найдено :(
+  date:
+    formats:
+      short: "%d %b %Y"
+      long: "%d %B %Y"
   activerecord:
     attributes:
       user:

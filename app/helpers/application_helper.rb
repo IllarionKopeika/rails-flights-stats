@@ -1,4 +1,6 @@
 module ApplicationHelper
+  require 'date'
+
   def locale_to_flag(locale)
     flags = {
       ru: 'fi fi-ru',
@@ -15,5 +17,10 @@ module ApplicationHelper
     parts << "#{hours} #{I18n.t('flights.hours')}" if hours.positive?
     parts << "#{mins} #{I18n.t('flights.mins')}" if mins.positive?
     parts.join(" ")
+  end
+
+  def format_date(date, locale = I18n.locale)
+    date = Date.strptime(date, "%Y-%m-%d")
+    I18n.l(date, format: :short, locale: locale)
   end
 end

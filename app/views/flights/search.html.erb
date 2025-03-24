@@ -1,36 +1,12 @@
 <%= turbo_frame_tag 'flight_result' do %>
   <div class="flight-card py-4 px-3">
     <h2 class="text-center mb-3"><%= t('.search_result') %></h2>
-    <div class="flight-info">
-      <div class="departure-info">
-        <img src="https://flagcdn.com/<%= @flight_data[:departure_country_code].downcase %>.svg" alt="<%= @flight_data[:departure_country_code] %>">
-        <div class="airport-time-info">
-          <h4><strong><%= @flight_data[:departure_airport] %></strong></h4>
-          <p><%= @flight_data[:departure_time] %></p>
-        </div>
-      </div>
 
-      <div class="airplane-icon">
-        <i class="fa-sharp fa-solid fa-plane-departure fa-xl"></i>
-      </div>
+    <% if @flight_data[:message] %>
+      <%= render 'flights/flight_not_found' %>
+    <% else %>
+      <%= render 'flights/flight_data' %>
+    <% end %>
 
-      <div class="flight-number-duration-info">
-        <p><%= @flight_data[:flight_number] %></p>
-        <p><%= @flight_data[:departure_date] %></p>
-        <p><%= duration(@flight_data[:duration]) %></p>
-      </div>
-
-      <div class="airplane-icon">
-        <i class="fa-sharp fa-solid fa-plane-arrival fa-xl"></i>
-      </div>
-
-      <div class="arrival-info">
-        <div class="airport-time-info">
-          <h4><strong><%= @flight_data[:arrival_airport] %></strong></h4>
-          <p><%= @flight_data[:arrival_time] %></p>
-        </div>
-        <img src="https://flagcdn.com/<%= @flight_data[:arrival_country_code].downcase %>.svg" alt="<%= @flight_data[:arrival_country_code] %>">
-      </div>
-    </div>
   </div>
 <% end %>

@@ -1,4 +1,9 @@
 en:
+  flight_not_found: Flights not found :(
+  date:
+    formats:
+      short: "%b %d %Y"
+      long: "%d %B %Y"
   activerecord:
     attributes:
       user:

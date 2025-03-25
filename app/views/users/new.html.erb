@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-  <div class="col-6">
+  <div class="col-lg-6 col-md-8 col-sm-10 col-12">
     <div class="custom-form">
 
       <h1 class="text-center mb-3"><%= t('.title') %></h1>
@@ -7,27 +7,22 @@
       <%= render 'shared/errors', object: @user %>
 
       <%= form_with model: @user do |f| %>
-        <div class="row mb-3">
-          <div class="col-6">
-            <%= f.email_field :email_address, placeholder: t('.email_address'), class: 'form-control' %>
-          </div>
-          <div class="col-6">
-            <%= f.text_field :name, placeholder: t('.name'), class: 'form-control' %>
-          </div>
+        <div class="mb-3">
+          <%= f.email_field :email_address, placeholder: t('.email_address'), class: 'form-control' %>
         </div>
-        <div class="row mb-3">
-          <div class="col-6">
-            <%= f.password_field :password, placeholder: t('.password'), class: 'form-control' %>
-          </div>
-          <div class="col-6">
-            <%= f.password_field :password_confirmation, placeholder: t('.password_confirmation'), class: 'form-control' %>
-          </div>
+        <div class="mb-3">
+          <%= f.text_field :name, placeholder: t('.name'), class: 'form-control' %>
         </div>
-
+        <div class="mb-3">
+          <%= f.password_field :password, placeholder: t('.password'), class: 'form-control' %>
+        </div>
+        <div class="mb-3">
+          <%= f.password_field :password_confirmation, placeholder: t('.password_confirmation'), class: 'form-control' %>
+        </div>
         <%= f.submit t('.sign_up'), class: 'btn btn-primary w-100 mb-3' %>
       <% end %>
 
-      <div class="links d-flex">
+      <div class="links d-flex justify-content-between justify-content-lg-around">
         <%= link_to t('.forgot_password'), forgot_password_path %>
         <%= link_to t('.log_in'), login_path %>
       </div>

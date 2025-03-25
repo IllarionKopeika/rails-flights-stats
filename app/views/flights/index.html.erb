@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-  <div class="col-6">
+  <div class="col-lg-6 col-md-8 col-sm-10 col-12">
     <div class="custom-form">
 
       <h1 class="text-center mb-3"><%= t('.title') %></h1>
@@ -8,15 +8,12 @@
           <div class="mb-3">
             <%= f.text_field :carrier, placeholder: t('.carrier'), class: 'form-control' %>
           </div>
-
           <div class="mb-3">
             <%= f.text_field :flight_number, placeholder: t('.flight_number'), class: 'form-control' %>
           </div>
-
           <div class="mb-3">
             <%= f.date_field :date, placeholder: t('.date'), class: 'form-control', data: { controller: 'datepicker', locale: I18n.locale } %>
           </div>
-
           <%= f.submit t('.search'), class: 'btn btn-primary w-100 mb-3' %>
       <% end %>
 

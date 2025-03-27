@@ -1,36 +1,38 @@
-<div class="flight-info mb-3">
-  <div class="departure-info">
-    <img src="https://flagcdn.com/<%= @flight_data[:departure_country_code].downcase %>.svg" alt="<%= @flight_data[:departure_country_code] %>">
-    <div class="airport-time-info">
-      <h4><strong><%= @flight_data[:departure_airport] %></strong></h4>
-      <p><%= @flight_data[:departure_time] %></p>
+<div class="flight-info d-flex justify-content-between align-items-center mb-3">
+
+  <div class="departure-info d-flex align-items-center">
+    <img class="me-2" src="https://flagcdn.com/<%= @flight_data[:departure_country_code].downcase %>.svg" alt="<%= @flight_data[:departure_country_code] %>">
+    <div class="airport-time-info d-flex flex-column">
+      <h4 class="my-0"><strong><%= @flight_data[:departure_airport] %></strong></h4>
+      <p class="my-0 align-self-start"><%= @flight_data[:departure_time] %></p>
     </div>
   </div>
 
-  <div class="airplane-icon">
+  <div class="airplane-icon d-flex justify-content-between align-items-center">
     <i class="fa-sharp fa-solid fa-plane-departure fa-xl"></i>
   </div>
 
-  <div class="flight-number-duration-info">
-    <p><%= @flight_data[:flight_number] %></p>
-    <p><%= format_date(@flight_data[:departure_date]) %></p>
-    <p><%= duration(@flight_data[:duration]) %></p>
+  <div class="flight-number-info d-flex flex-column justify-content-center align-items-center">
+    <p class="my-0"><%= @flight_data[:flight_number] %></p>
+    <p class="my-0"><%= format_date(@flight_data[:departure_date]) %></p>
+    <p class="my-0"><%= duration(@flight_data[:duration]) %></p>
   </div>
 
-  <div class="airplane-icon">
+  <div class="airplane-icon d-flex justify-content-between align-items-center">
     <i class="fa-sharp fa-solid fa-plane-arrival fa-xl"></i>
   </div>
 
-  <div class="arrival-info">
-    <div class="airport-time-info">
-      <h4><strong><%= @flight_data[:arrival_airport] %></strong></h4>
-      <p><%= @flight_data[:arrival_time] %></p>
+  <div class="arrival-info d-flex align-items-center">
+    <div class="airport-time-info d-flex flex-column">
+      <h4 class="my-0"><strong><%= @flight_data[:arrival_airport] %></strong></h4>
+      <p class="my-0 align-self-end"><%= @flight_data[:arrival_time] %></p>
     </div>
-    <img src="https://flagcdn.com/<%= @flight_data[:arrival_country_code].downcase %>.svg" alt="<%= @flight_data[:arrival_country_code] %>">
+    <img class="ms-2" src="https://flagcdn.com/<%= @flight_data[:arrival_country_code].downcase %>.svg" alt="<%= @flight_data[:arrival_country_code] %>">
   </div>
 </div>
+
 <div class="row justify-content-center">
   <div class="col-6">
-    <%= link_to t('.add_flight'), '#', class: 'btn btn-info w-100 text-white' %>
+    <%= link_to t('.add_flight'), '#', class: 'btn btn-info w-100 text-white', style: 'font-size: 16px;' %>
   </div>
 </div>

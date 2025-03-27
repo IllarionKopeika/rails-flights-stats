@@ -83,6 +83,7 @@ ru:
   shared:
     navbar:
       hello: Привет
+      hello_stranger: Привет, незнакомец!
       profile: Мой профиль
       change_password: Изменить пароль
       log_out: Выйти

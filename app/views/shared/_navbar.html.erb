@@ -1,12 +1,23 @@
 <nav class="navbar navbar-expand-lg custom-navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand fs-4" href="#">Icon</a>
+  <div class="container">
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <%= image_tag('logo.png', alt: 'logo', width: 30, height: 30, class: 'd-inline-block align-text-top') %>
+      Rails Flights' Stats
+    <% end %>
     <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header border-primary border-bottom">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Icon</h5>
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+          <% if authenticated? && Current.user.name.present? %>
+            <%= t('.hello') %>, <%= Current.user.name %>!
+          <% elsif authenticated? && !Current.user.name.present? %>
+            <%= t('.hello') %>!
+          <% else %>
+            <%= t('.hello_stranger') %>
+          <% end %>
+        </h5>
         <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">

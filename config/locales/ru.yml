@@ -19,10 +19,12 @@ ru:
       invalid: Текущий пароль неверный
       taken_email_address: уже используется
   flights:
-    not_available: Н/Д
     hours: ч
-    mins: мин
     invalid_date: Некорректная дата
+    mins: мин
+    not_available: Н/Д
+    flight_data:
+      add_flight: Добавить
     index:
       title: Поиск рейсов
       carrier: Авиакомпания

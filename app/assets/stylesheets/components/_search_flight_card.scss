@@ -24,8 +24,24 @@
   .flight-number-info {
     p {
       color: $secondary;
-      font-size: 14px;
-      font-weight: 400;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+  @media (max-width: 767px) {
+    img {
+      width: 60px;
+      height: 40px;
+      border-radius: 5px;
+    }
+    h4 {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .departure-info, .flight-number-info {
+      margin-bottom: 1rem;
     }
   }
 }

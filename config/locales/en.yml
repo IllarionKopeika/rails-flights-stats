@@ -19,10 +19,12 @@ en:
       invalid: Current password is incorrect
       taken_email_address: is already taken
   flights:
-    not_available: N/A
     hours: h
-    mins: mins
     invalid_date: Invalid date
+    mins: mins
+    not_available: N/A
+    flight_data:
+      add_flight: Add flight
     index:
       title: Flights' search
       carrier: Carrier

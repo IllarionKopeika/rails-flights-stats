@@ -23,4 +23,10 @@ module ApplicationHelper
     date = Date.strptime(date, "%Y-%m-%d")
     I18n.l(date, format: :short, locale: locale)
   end
+
+  def date_comparison(departure, arrival)
+    departure_date = Date.parse(departure)
+    arrival_date = Date.parse(arrival)
+    arrival_date > departure_date
+  end
 end

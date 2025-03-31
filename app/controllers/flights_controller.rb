@@ -63,6 +63,7 @@ class FlightsController < ApplicationController
           departure_time: flight_data[:data][0][:departure][:time][:local],
           arrival_country_code: flight_data[:data][0][:arrival][:country][:code],
           arrival_airport: flight_data[:data][0][:arrival][:airport][:iata],
+          arrival_date: flight_data[:data][0][:arrival][:date][:local],
           arrival_time: flight_data[:data][0][:arrival][:time][:local],
           duration: flight_data[:data][0][:elapsedTime]
         }

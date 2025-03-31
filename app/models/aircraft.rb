@@ -1,4 +1,6 @@
 class Aircraft < ApplicationRecord
+  has_many :flights
+
   before_save :set_manufacturer
 
   private

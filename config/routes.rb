@@ -22,8 +22,10 @@ Rails.application.routes.draw do
     get 'profile', to: 'users#show', as: 'profile'
 
     # flights
+    resources :flights, only: [ :index, :create ]
     root 'flights#index'
-    get 'search_flights', to: 'flights#search', as: 'search_flights'
+    get 'search', to: 'flights#search', as: 'search'
+    get 'fetch_flight', to: 'flights#fetch', as: 'fetch_flight'
   end
 
   get 'up' => 'rails/health#show', as: :rails_health_check

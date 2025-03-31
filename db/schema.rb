@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_19_091447) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_31_082059) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -51,6 +51,29 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_091447) do
     t.index ["subregion_id"], name: "index_countries_on_subregion_id"
   end
 
+  create_table "flights", force: :cascade do |t|
+    t.string "number"
+    t.string "departure_date"
+    t.string "departure_time"
+    t.string "arrival_date"
+    t.string "arrival_time"
+    t.integer "duration"
+    t.float "distance"
+    t.integer "status"
+    t.bigint "airline_id", null: false
+    t.bigint "aircraft_id", null: false
+    t.bigint "departure_airport_id", null: false
+    t.bigint "arrival_airport_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["aircraft_id"], name: "index_flights_on_aircraft_id"
+    t.index ["airline_id"], name: "index_flights_on_airline_id"
+    t.index ["arrival_airport_id"], name: "index_flights_on_arrival_airport_id"
+    t.index ["departure_airport_id"], name: "index_flights_on_departure_airport_id"
+    t.index ["user_id"], name: "index_flights_on_user_id"
+  end
+
   create_table "regions", force: :cascade do |t|
     t.jsonb "name", default: {}, null: false
     t.boolean "visited", default: false
@@ -88,6 +111,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_091447) do
 
   add_foreign_key "airports", "countries"
   add_foreign_key "countries", "subregions"
+  add_foreign_key "flights", "aircrafts"
+  add_foreign_key "flights", "airlines"
+  add_foreign_key "flights", "airports", column: "arrival_airport_id"
+  add_foreign_key "flights", "airports", column: "departure_airport_id"
+  add_foreign_key "flights", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "subregions", "regions"
 end

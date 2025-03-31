@@ -23,16 +23,18 @@ en:
     invalid_date: Invalid date
     mins: mins
     not_available: N/A
+    create:
+      create_success: Flight was successfully added!
+    fetch:
+      search_result: Search result
     flight_data:
       add_flight: Add flight
-    index:
+    search:
       title: Flights' search
       carrier: Carrier
       flight_number: Flight number
       date: Date
       search: Search
-    search:
-      search_result: Search result
   passwords:
     change_password:
       title: Change password

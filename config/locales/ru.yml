@@ -23,16 +23,18 @@ ru:
     invalid_date: Некорректная дата
     mins: мин
     not_available: Н/Д
+    create:
+      create_success: Рейс успешно добавлен!
+    fetch:
+      search_result: Результат поиска
     flight_data:
       add_flight: Добавить
-    index:
+    search:
       title: Поиск рейсов
       carrier: Авиакомпания
       flight_number: Номер рейса
       date: Дата вылета
       search: Поиск
-    search:
-      search_result: Результат поиска
   passwords:
     change_password:
       title: Изменить пароль

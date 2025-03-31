@@ -1,12 +1,27 @@
-<%= turbo_frame_tag 'flight_result' do %>
-  <div class="flight-card py-4 px-3">
-    <h2 class="text-center mb-3"><%= t('.search_result') %></h2>
+<div class="row justify-content-center">
+  <div class="col-xl-6 col-lg-8 col-md-10 col-12">
+    <div class="custom-form">
 
-    <% if @flight_data[:message] %>
-      <%= render 'flights/flight_not_found' %>
-    <% else %>
-      <%= render 'flights/flight_data' %>
+      <h1 class="text-center mb-3"><%= t('.title') %></h1>
+
+      <%= form_with url: fetch_flight_path, method: :get, id: 'flight-search-form', data: { turbo_frame: 'flight_result' } do |f| %>
+          <div class="mb-3">
+            <%= f.text_field :carrier, placeholder: t('.carrier'), class: 'form-control' %>
+          </div>
+          <div class="mb-3">
+            <%= f.text_field :flight_number, placeholder: t('.flight_number'), class: 'form-control' %>
+          </div>
+          <div class="mb-3">
+            <%= f.date_field :date, placeholder: t('.date'), class: 'form-control', data: { controller: 'datepicker', locale: I18n.locale } %>
+          </div>
+          <%= f.submit t('.search'), class: 'btn btn-primary w-100 mb-3' %>
+      <% end %>
+
+
+    <%= turbo_frame_tag 'flight_result' do %>
+      <!-- search result -->
     <% end %>
-  </div>
 
-<% end %>
+    </div>
+  </div>
+</div>

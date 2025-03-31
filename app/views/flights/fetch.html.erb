@@ -1,0 +1,12 @@
+<%= turbo_frame_tag 'flight_result' do %>
+  <div class="flight-card py-4 px-3">
+    <h2 class="text-center mb-3"><%= t('.search_result') %></h2>
+
+    <% if @flight_data[:message] %>
+      <h4 class="text-center text-secondary mb-3"><%= @flight_data[:message] %></h4>
+    <% else %>
+      <%= render 'flights/flight_data' %>
+    <% end %>
+  </div>
+
+<% end %>

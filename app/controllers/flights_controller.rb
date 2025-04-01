@@ -60,7 +60,6 @@ class FlightsController < ApplicationController
   end
 
   def flight_params
-    puts "Here are the params: #{params.inspect}"
     params.require(:flight).permit(:number, :departure_date, :departure_time, :arrival_date, :arrival_time, :duration, :distance)
   end
 end

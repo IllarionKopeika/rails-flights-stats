@@ -16,6 +16,7 @@ ru:
       blank: не может быть пустым
       blank_email_address: не может быть пустой
       confirmation: Пароли не совпадают
+      duplicate_flight: Рейс с таким номером и датой уже добавлен!
       invalid: Текущий пароль неверный
       taken_email_address: уже используется
   flights:

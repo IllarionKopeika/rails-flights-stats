@@ -16,6 +16,7 @@ en:
       blank: can't be blank
       blank_email_address: can't be blank
       confirmation: Passwords don't match
+      duplicate_flight: Flight with this number and date is already added!
       invalid: Current password is incorrect
       taken_email_address: is already taken
   flights:

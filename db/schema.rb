@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_31_082059) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_01_091425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -71,6 +71,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_31_082059) do
     t.index ["airline_id"], name: "index_flights_on_airline_id"
     t.index ["arrival_airport_id"], name: "index_flights_on_arrival_airport_id"
     t.index ["departure_airport_id"], name: "index_flights_on_departure_airport_id"
+    t.index ["number", "departure_date"], name: "index_flights_on_number_and_departure_date", unique: true
     t.index ["user_id"], name: "index_flights_on_user_id"
   end
 

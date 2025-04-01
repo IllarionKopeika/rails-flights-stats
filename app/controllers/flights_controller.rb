@@ -29,6 +29,8 @@ class FlightsController < ApplicationController
       flash[:success] = t('.create_success')
       redirect_to flights_path
     else
+      Rails.logger.debug ">>> errors #{@flight.errors.full_messages}"
+      flash[:danger] = @flight.errors[:number].first
       render 'search', status: :unprocessable_entity
     end
   end

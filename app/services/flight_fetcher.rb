@@ -63,7 +63,9 @@ class FlightFetcher
         arrival_date_utc: flight.dig(:arrival, :date, :utc),
         arrival_time: flight.dig(:arrival, :time, :local),
         arrival_time_utc: flight.dig(:arrival, :time, :utc),
-        duration: flight[:elapsedTime]
+        duration: flight[:elapsedTime],
+        distance: flight.dig(:distance, :accumulatedGreatCircleKilometers),
+        aircraft_code: flight.dig(:aircraftType, :iata)
       }
     end
   end

@@ -9,6 +9,22 @@ class FlightsController < ApplicationController
     @flight = Flight.new(flight_params)
     @flight.user = Current.user
 
+    if params[:flight][:departure_date_utc].present? && params[:flight][:departure_time_utc].present?
+      departure_utc = Time.zone.parse("#{params[:flight][:departure_date_utc]} #{params[:flight][:departure_time_utc]}").utc
+      @flight.status = departure_utc > Time.current.utc ? :upcoming : :completed
+    else
+      @flight.status = :upcoming
+    end
+
+    @flight.airline = Airline.find_or_create_by(code: params[:flight][:airline_code])
+    @flight.aircraft = Aircraft.find_or_create_by(code: params[:flight][:aircraft_code])
+    @flight.departure_airport = Airport.find_or_create_by(code: params[:flight][:departure_airport_code]) do |airport|
+      airport.country = Country.find_by(code: params[:flight][:departure_country_code])
+    end
+    @flight.arrival_airport = Airport.find_or_create_by(code: params[:flight][:arrival_airport_code]) do |airport|
+      airport.country = Country.find_by(code: params[:flight][:arrival_country_code])
+    end
+
     if @flight.save
       flash[:success] = t('.create_success')
       redirect_to flights_path
@@ -44,6 +60,7 @@ class FlightsController < ApplicationController
   end
 
   def flight_params
-    params.require(:flight).permit(:number, :departure_date, :departure_time, :arrival_date, :arrival_time, :duration, :distance, :status, :airline_id, :aircraft_id, :departure_airport_id, :arrival_airport_id)
+    puts "Here are the params: #{params.inspect}"
+    params.require(:flight).permit(:number, :departure_date, :departure_time, :arrival_date, :arrival_time, :duration, :distance)
   end
 end

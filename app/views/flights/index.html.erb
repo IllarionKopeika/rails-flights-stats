@@ -1,3 +1,27 @@
-<h1>Index page</h1>
-
-<%= link_to 'Search flights', search_path, class: 'btn btn-primary text-white' %>
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div class="custom-index">
+      <h1 class="text-center mb-3"><%= t('.title') %></h1>
+      <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming-tab-pane" type="button" role="tab" aria-controls="upcoming-tab-pane" aria-selected="true"><%= t('.upcoming') %></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="completed-tab" data-bs-toggle="tab" data-bs-target="#completed-tab-pane" type="button" role="tab" aria-controls="completed-tab-pane" aria-selected="false"><%= t('.completed') %></button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="upcoming-tab-pane" role="tabpanel" aria-labelledby="upcoming-tab" tabindex="0">
+          <% @upcoming_flights.each do |flight| %>
+            <%= render 'upcoming_flights', flight: flight %>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="completed-tab-pane" role="tabpanel" aria-labelledby="completed-tab" tabindex="0">
+          <% @completed_flights.each do |flight| %>
+            <%= render 'completed_flights', flight: flight %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

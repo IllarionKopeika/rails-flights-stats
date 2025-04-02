@@ -1,4 +1,7 @@
 class Flight < ApplicationRecord
+  scope :upcoming, -> { where(status: :upcoming) }
+  scope :completed, -> { where(status: :completed) }
+
   belongs_to :airline, optional: true
   belongs_to :aircraft, optional: true
   belongs_to :user

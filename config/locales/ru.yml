@@ -30,6 +30,10 @@ ru:
       search_result: Результат поиска
     flight_data:
       add_flight: Добавить
+    index:
+      title: Мои рейсы
+      upcoming: Будущие
+      completed: Завершенные
     search:
       title: Поиск рейсов
       carrier: Авиакомпания
@@ -89,6 +93,7 @@ ru:
     navbar:
       hello: Привет
       hello_stranger: Привет, незнакомец!
+      search: Поиск рейсов
       profile: Мой профиль
       change_password: Изменить пароль
       log_out: Выйти

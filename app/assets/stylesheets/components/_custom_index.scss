@@ -1,0 +1,27 @@
+.custom-index {
+  background: rgba(white,0.7);
+  border: 1px solid $primary;
+  border-radius: 5px;
+  padding: 40px;
+  .nav {
+    background: transparent !important;
+    border-bottom: none !important;
+  }
+  .nav-link {
+    color: $primary;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .nav-tabs .nav-link.active {
+    background-color: transparent !important;
+    border-bottom: 2px solid $primary !important;
+    color: $primary;
+    pointer-events: none;
+  }
+  .nav-tabs .nav-link {
+    border: none !important;
+    &:hover {
+      border: none !important;
+    }
+  }
+}

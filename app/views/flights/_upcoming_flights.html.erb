@@ -1,0 +1,40 @@
+<div class="upcoming-flight-card d-flex flex-column">
+
+  <!-- airline logo, flight number & date -->
+  <div class="d-flex justify-content-around">
+    <div class="d-flex align-items-center">
+      <img src="<%= flight.airline.logo_url %>" alt="<%= flight.airline.name %>">
+      <p><%= flight.number %></p>
+    </div>
+    <div class="d-flex align-items-center">
+      <p><%= flight.departure_date %></p>
+    </div>
+  </div>
+
+  <!-- departure airport, aircraft, arrival airport -->
+  <div class="d-flex justify-content-around align-items-center">
+    <div>
+      <h5><%= flight.departure_airport.code %></h5>
+    </div>
+    <div>
+      <p><%= flight.aircraft.name %></p>
+    </div>
+    <div>
+      <h5><%= flight.arrival_airport.code %></h5>
+    </div>
+  </div>
+
+  <!-- departure icon, departure time, flight duration, arrival icon, arrival time -->
+  <div class="d-flex justify-content-around align-items-center">
+    <div>
+      <h6><%= flight.departure_time %></h6>
+    </div>
+    <div>
+      <p><%= duration(flight.duration) %></p>
+    </div>
+    <div>
+      <h6><%= flight.arrival_time %></h6>
+    </div>
+  </div>
+
+</div>

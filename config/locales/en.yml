@@ -94,6 +94,7 @@ en:
       hello: Hello
       hello_stranger: Hello stranger!
       search: Search flights
+      my_flights: My flights
       profile: Profile
       change_password: Change password
       log_out: Log out

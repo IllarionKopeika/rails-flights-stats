@@ -94,6 +94,7 @@ ru:
       hello: Привет
       hello_stranger: Привет, незнакомец!
       search: Поиск рейсов
+      my_flights: Мои рейсы
       profile: Мой профиль
       change_password: Изменить пароль
       log_out: Выйти

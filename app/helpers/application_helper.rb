@@ -29,4 +29,28 @@ module ApplicationHelper
     arrival_date = Date.parse(arrival)
     arrival_date > departure_date
   end
+
+  def days_to_flight(departure_date)
+    (Date.parse(departure_date) - Date.today).to_i
+  end
+
+  def pluralize_days(count)
+    locale = I18n.locale
+    if locale == :ru
+      russian_pluralize(count, "день", "дня", "дней")
+    else
+      count == 1 ? "day" : "days"
+    end
+  end
+
+  private
+
+  def russian_pluralize(count, one, few, many)
+    return many if (count % 100).between?(11, 14)
+    case count % 10
+    when 1 then one
+    when 2..4 then few
+    else many
+    end
+  end
 end

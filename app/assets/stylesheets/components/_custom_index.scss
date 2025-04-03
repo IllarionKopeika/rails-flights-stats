@@ -2,7 +2,6 @@
   background: rgba(white,0.7);
   border: 1px solid $primary;
   border-radius: 5px;
-  padding: 40px;
   .nav {
     background: transparent !important;
     border-bottom: none !important;
@@ -22,6 +21,12 @@
     border: none !important;
     &:hover {
       border: none !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .nav-link {
+      font-size: 14px;
     }
   }
 }

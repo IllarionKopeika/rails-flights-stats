@@ -1,40 +1,47 @@
-<div class="upcoming-flight-card d-flex flex-column">
+<div class="upcoming-flight-card d-flex mb-2 p-3">
 
-  <!-- airline logo, flight number & date -->
-  <div class="d-flex justify-content-around">
-    <div class="d-flex align-items-center">
-      <img src="<%= flight.airline.logo_url %>" alt="<%= flight.airline.name %>">
-      <p><%= flight.number %></p>
-    </div>
-    <div class="d-flex align-items-center">
-      <p><%= flight.departure_date %></p>
-    </div>
+  <!-- days to flight -->
+  <div class="d-flex flex-column justify-content-center align-items-center me-3 p-1 p-sm-3 text-center">
+    <h4 class="m-0"><%= days_to_flight(flight.departure_date) %></h4>
+    <h6 class="m-0"><%= pluralize_days(days_to_flight(flight.departure_date)) %></h6>
   </div>
 
-  <!-- departure airport, aircraft, arrival airport -->
-  <div class="d-flex justify-content-around align-items-center">
-    <div>
-      <h5><%= flight.departure_airport.code %></h5>
-    </div>
-    <div>
-      <p><%= flight.aircraft.name %></p>
-    </div>
-    <div>
-      <h5><%= flight.arrival_airport.code %></h5>
-    </div>
-  </div>
+  <!-- other info -->
+  <div class="d-flex flex-column flex-fill">
 
-  <!-- departure icon, departure time, flight duration, arrival icon, arrival time -->
-  <div class="d-flex justify-content-around align-items-center">
-    <div>
-      <h6><%= flight.departure_time %></h6>
+    <!-- airline logo, flight number & date -->
+    <div class="d-flex justify-content-around align-items-center mb-2">
+      <div class="d-flex align-items-center gap-2">
+        <img src="<%= flight.airline.logo_url %>" alt="<%= flight.airline.name %>">
+        <p class="m-0"><%= flight.number %></p>
+      </div>
+      <div>
+        <p class="m-0"><%= format_date(flight.departure_date) %></p>
+      </div>
     </div>
-    <div>
-      <p><%= duration(flight.duration) %></p>
+
+    <!-- departure, icon, aircraft & duration, icon, arrival -->
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <h4 class="my-0"><strong><%= flight.departure_airport.code %></strong></h4>
+        <p class="my-0 align-self-end"><%= flight.departure_time %></p>
+      </div>
+      <div>
+        <i class="aircraft-icon fa-sharp fa-solid fa-plane-departure"></i>
+      </div>
+      <div>
+        <p class="my-0 text-center"><%= flight.aircraft.name %></p>
+        <p class="my-0 text-center"><%= duration(flight.duration) %></p>
+      </div>
+      <div>
+        <i class="aircraft-icon fa-sharp fa-solid fa-plane-arrival"></i>
+      </div>
+      <div>
+        <h4 class="my-0"><strong><%= flight.arrival_airport.code %></strong></h4>
+        <p class="my-0"><%= flight.arrival_time %></p>
+      </div>
     </div>
-    <div>
-      <h6><%= flight.arrival_time %></h6>
-    </div>
+
   </div>
 
 </div>

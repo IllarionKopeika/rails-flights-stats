@@ -6,5 +6,38 @@
   img {
     width: 30px;
     height: 30px;
+    object-fit: contain;
+  }
+  .aircraft-icon {
+    color: $info;
+    font-size: 20px;
+  }
+  .flex-fill {
+    h4 {
+      color: $primary;
+    }
+  }
+  p {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 576px) {
+    h4 {
+      font-size: 20px;
+    }
+    h6 {
+      font-size: 14px;
+    }
+    p {
+      font-size: 12px;
+    }
+    .aircraft-icon {
+      font-size: 14px;
+    }
+    img {
+      width: 20px;
+      height: 20px;
+    }
   }
 }

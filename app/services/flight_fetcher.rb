@@ -11,6 +11,7 @@ class FlightFetcher
 
   def call
     response = HTTParty.get(API_URL, headers: headers, query: query_params)
+    Rails.logger.debug ">>> flight search res #{response}"
 
     if response.success?
       parse_response(response)

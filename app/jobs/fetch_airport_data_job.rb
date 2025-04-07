@@ -23,7 +23,7 @@ class FetchAirportDataJob < ApplicationJob
         airport.update!(name: 'Unknown Airport')
       else
         airport_data = data[:data][0]
-        airport.update!(name: airport_data[:name])
+        airport.update!(name: airport_data[:name], timezone: airport_data[:timeZone])
       end
     else
       airport.update!(name: 'Unknown Airport')

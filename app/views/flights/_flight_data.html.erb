@@ -3,7 +3,7 @@
   <!-- departure info -->
   <div class="d-flex justify-content-center align-items-center mb-2 mb-sm-0">
     <img class="me-3 me-sm-2" src="https://flagcdn.com/<%= @flight_data[:departure_country_code].downcase %>.svg" alt="<%= @flight_data[:departure_country_code] %>">
-    <div class="d-flex flex-column align-items-end">
+    <div class="d-flex flex-column align-items-center">
       <h4 class="my-0"><strong><%= @flight_data[:departure_airport] %></strong></h4>
       <p class="my-0"><%= @flight_data[:departure_time] %></p>
     </div>
@@ -15,10 +15,10 @@
   </div>
 
   <!-- number, date, duration -->
-  <div class="d-flex flex-column">
-    <p class="my-0 text-center"><%= @flight_data[:flight_number] %></p>
-    <p class="my-0 text-center"><%= format_date(@flight_data[:departure_date]) %></p>
-    <p class="my-0 text-center"><%= duration(@flight_data[:duration]) %></p>
+  <div class="d-flex flex-column align-items-center">
+    <p class="my-0"><%= @flight_data[:flight_number] %></p>
+    <p class="my-0"><%= format_date(@flight_data[:departure_date]) %></p>
+    <p class="my-0"><%= duration(@flight_data[:duration]) %></p>
   </div>
 
   <!-- arrival icon -->
@@ -28,7 +28,7 @@
 
   <!-- arrival info -->
   <div class="d-flex justify-content-center align-items-center mt-2 mt-sm-0">
-    <div class="d-flex flex-column align-items-start">
+    <div class="d-flex flex-column align-items-center">
       <h4 class="my-0"><strong><%= @flight_data[:arrival_airport] %></strong></h4>
       <p class="my-0 position-relative"><%= @flight_data[:arrival_time] %>
         <% if date_comparison(@flight_data[:departure_date], @flight_data[:arrival_date]) %>
@@ -57,6 +57,8 @@
         <%= f.hidden_field :departure_country_code, value: @flight_data[:departure_country_code] %>
         <%= f.hidden_field :arrival_date, value: @flight_data[:arrival_date] %>
         <%= f.hidden_field :arrival_time, value: @flight_data[:arrival_time] %>
+        <%= f.hidden_field :arrival_date_utc, value: @flight_data[:arrival_date_utc] %>
+        <%= f.hidden_field :arrival_time_utc, value: @flight_data[:arrival_time_utc] %>
         <%= f.hidden_field :arrival_country_code, value: @flight_data[:arrival_country_code] %>
         <%= f.hidden_field :duration, value: @flight_data[:duration] %>
         <%= f.hidden_field :distance, value: @flight_data[:distance] %>

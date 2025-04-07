@@ -27,6 +27,13 @@ class FlightsController < ApplicationController
     end
 
     if @flight.save
+      if @flight.arrival_date.present? && @flight.arrival_time.present?
+        tz = @flight.arrival_airport.time_zone.presence || 'UTC'
+        local_arrival = Time.find_zone(tz).parse("#{@flight.arrival_date} #{@flight.arrival_time}")
+        arrival_utc = local_arrival.utc
+        Flights::CompleteFlightJob.set(wait_until: arrival_utc).perform_later(@flight.id)
+      end
+
       flash[:success] = t('.create_success')
       redirect_to flights_path
     else

@@ -1,28 +1,36 @@
-<div class="flight-info d-flex flex-column flex-sm-row justify-content-between align-items-center mb-3">
+<div class="d-flex flex-column flex-sm-row justify-content-between align-items-center mb-3">
 
-  <!-- departure -->
-  <div class="departure-info d-flex align-items-center">
-    <img class="me-4 me-sm-2" src="https://flagcdn.com/<%= @flight_data[:departure_country_code].downcase %>.svg" alt="<%= @flight_data[:departure_country_code] %>">
-    <div class="airport-time-info d-flex flex-column me-4 me-sm-2 me-md-3 me-lg-4 me-xl-2 me-xxl-4">
+  <!-- departure info -->
+  <div class="d-flex justify-content-center align-items-center mb-2 mb-sm-0">
+    <img class="me-3 me-sm-2" src="https://flagcdn.com/<%= @flight_data[:departure_country_code].downcase %>.svg" alt="<%= @flight_data[:departure_country_code] %>">
+    <div class="d-flex flex-column align-items-end">
       <h4 class="my-0"><strong><%= @flight_data[:departure_airport] %></strong></h4>
-      <p class="my-0 align-self-end"><%= @flight_data[:departure_time] %></p>
+      <p class="my-0"><%= @flight_data[:departure_time] %></p>
     </div>
-    <i class="fa-sharp fa-solid fa-plane-departure fa-xl"></i>
+  </div>
+
+  <!-- departure icon -->
+  <div>
+    <i class="aircraft-icon fa-sharp fa-solid fa-plane-departure"></i>
   </div>
 
   <!-- number, date, duration -->
-  <div class="flight-number-info d-flex flex-column justify-content-center align-items-center">
-    <p class="my-0"><%= @flight_data[:flight_number] %></p>
-    <p class="my-0"><%= format_date(@flight_data[:departure_date]) %></p>
-    <p class="my-0"><%= duration(@flight_data[:duration]) %></p>
+  <div class="d-flex flex-column">
+    <p class="my-0 text-center"><%= @flight_data[:flight_number] %></p>
+    <p class="my-0 text-center"><%= format_date(@flight_data[:departure_date]) %></p>
+    <p class="my-0 text-center"><%= duration(@flight_data[:duration]) %></p>
   </div>
 
-  <!-- arrival -->
-  <div class="arrival-info d-flex align-items-center">
-    <i class="fa-sharp fa-solid fa-plane-arrival fa-xl"></i>
-    <div class="airport-time-info d-flex flex-column ms-4 ms-sm-2 ms-md-3 ms-lg-4 ms-xl-2 ms-xxl-4">
+  <!-- arrival icon -->
+  <div>
+    <i class="aircraft-icon fa-sharp fa-solid fa-plane-arrival"></i>
+  </div>
+
+  <!-- arrival info -->
+  <div class="d-flex justify-content-center align-items-center mt-2 mt-sm-0">
+    <div class="d-flex flex-column align-items-start">
       <h4 class="my-0"><strong><%= @flight_data[:arrival_airport] %></strong></h4>
-      <p class="my-0 align-self-start position-relative"><%= @flight_data[:arrival_time] %>
+      <p class="my-0 position-relative"><%= @flight_data[:arrival_time] %>
         <% if date_comparison(@flight_data[:departure_date], @flight_data[:arrival_date]) %>
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-danger p-1 ms-1 mt-1" style="font-weight: 400;">+1
             <span class="visually-hidden">Arrive next day</span>
@@ -30,7 +38,7 @@
         <% end %>
       </p>
     </div>
-    <img class="ms-4 ms-sm-2" src="https://flagcdn.com/<%= @flight_data[:arrival_country_code].downcase %>.svg" alt="<%= @flight_data[:arrival_country_code] %>">
+    <img class="ms-3 ms-sm-2" src="https://flagcdn.com/<%= @flight_data[:arrival_country_code].downcase %>.svg" alt="<%= @flight_data[:arrival_country_code] %>">
   </div>
 
 </div>

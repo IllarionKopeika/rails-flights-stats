@@ -3,6 +3,11 @@
   border-radius: 25px;
   box-shadow: 2px 2px 4px gray;
   overflow: hidden;
+  .days-to-flight {
+    width: 60px;
+    text-align: center;
+    flex-shrink: 0;
+  }
   img {
     width: 30px;
     height: 30px;
@@ -23,21 +28,24 @@
   }
 
   @media (max-width: 576px) {
+    .days-to-flight {
+      width: 40px;
+    }
+    img {
+      width: 20px;
+      height: 20px;
+    }
+    .aircraft-icon {
+      font-size: 14px;
+    }
     h4 {
-      font-size: 20px;
+      font-size: 18px;
     }
     h6 {
       font-size: 14px;
     }
     p {
       font-size: 12px;
-    }
-    .aircraft-icon {
-      font-size: 14px;
-    }
-    img {
-      width: 20px;
-      height: 20px;
     }
   }
 }

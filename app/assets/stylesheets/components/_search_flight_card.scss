@@ -7,41 +7,35 @@
     width: 75px;
     height: 50px;
     border-radius: 5px;
+    object-fit: contain;
+  }
+  .aircraft-icon {
+    color: $info;
+    font-size: 20px;
   }
   h4 {
     color: $primary;
   }
-  .airport-time-info {
-    p {
-      color: $secondary;
-      font-size: 14px;
-      font-weight: 400;
-    }
-  }
-  i {
-    color: $primary;
-  }
-  .flight-number-info {
-    p {
-      color: $secondary;
-      font-size: 12px;
-      font-weight: bold;
-    }
-  }
-  @media (max-width: 767px) {
-    img {
-      width: 60px;
-      height: 40px;
-      border-radius: 5px;
-    }
-    h4 {
-      font-size: 20px;
-    }
+  p {
+    font-size: 14px;
+    font-weight: 500;
   }
 
   @media (max-width: 576px) {
-    .departure-info, .flight-number-info {
-      margin-bottom: 1rem;
+    img {
+      width: 51px;
+      height: 34px;
+      border-radius: 5px;
+      object-fit: contain;
+    }
+    .aircraft-icon {
+      font-size: 14px;
+    }
+    h4 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 12px;
     }
   }
 }

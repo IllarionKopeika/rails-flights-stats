@@ -17,22 +17,17 @@ class FlightsController < ApplicationController
       @flight.status = :upcoming
     end
 
-    @flight.airline = Airline.find_or_create_by(code: params[:flight][:airline_code])
-    @flight.aircraft = Aircraft.find_or_create_by(code: params[:flight][:aircraft_code])
     @flight.departure_airport = Airport.find_or_create_by(code: params[:flight][:departure_airport_code]) do |airport|
       airport.country = Country.find_by(code: params[:flight][:departure_country_code])
     end
     @flight.arrival_airport = Airport.find_or_create_by(code: params[:flight][:arrival_airport_code]) do |airport|
       airport.country = Country.find_by(code: params[:flight][:arrival_country_code])
     end
+    @flight.airline = Airline.find_or_create_by(code: params[:flight][:airline_code])
+    @flight.aircraft = Aircraft.find_or_create_by(code: params[:flight][:aircraft_code])
 
     if @flight.save
-      if @flight.arrival_date.present? && @flight.arrival_time.present?
-        tz = @flight.arrival_airport.time_zone.presence || 'UTC'
-        local_arrival = Time.find_zone(tz).parse("#{@flight.arrival_date} #{@flight.arrival_time}")
-        arrival_utc = local_arrival.utc
-        Flights::CompleteFlightJob.set(wait_until: arrival_utc).perform_later(@flight.id)
-      end
+      Flights::ScheduleCompletionJob.set(wait: 1.minute).perform_later(@flight.id)
 
       flash[:success] = t('.create_success')
       redirect_to flights_path

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
+
   scope '(:locale)', locale: /ru|en/ do
     # sessions
     resource :session, only: :create

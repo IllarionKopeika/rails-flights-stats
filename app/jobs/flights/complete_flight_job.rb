@@ -7,6 +7,12 @@ class Flights::CompleteFlightJob < ApplicationJob
     return unless flight.upcoming?
 
     flight.update!(status: :completed)
-    Rails.logger.debug ">>> from #{flight.departure_airport} to #{flight.arrival_airport} marked as completed by CompleteFlightJob"
+
+    [flight.departure_airport, flight.arrival_airport].each do |airport|
+      country = airport.country
+      country.update!(visited: true) unless country.visited?
+      region = country.subregion.region
+      region.update!(visited: true) unless region.visited?
+    end
   end
 end

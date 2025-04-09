@@ -10,9 +10,9 @@ class Flights::ScheduleCompletionJob < ApplicationJob
     return unless flight.arrival_date.present? && flight.arrival_time.present?
 
     local_time = Time.find_zone(arrival_airport.timezone).parse("#{flight.arrival_date} #{flight.arrival_time}")
-    Rails.logger.debug ">>> local_time #{local_time}"
     return unless local_time
 
     Flights::CompleteFlightJob.set(wait_until: local_time.utc).perform_later(flight.id)
+    Flights::UpdateFlightAfterArrivalJob.set(wait_until: local_time.utc + 2.hours).perform_later(flight.id)
   end
 end

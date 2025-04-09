@@ -20,13 +20,19 @@ class FetchAircraftDataJob < ApplicationJob
       data = JSON.parse(response.body, symbolize_names: true)
       Rails.logger.debug ">>> data #{data}"
       if data.dig(:data).blank?
-        aircraft.update!(name: 'Unknown Aircraft')
+        reset_fields(aircraft)
       else
         aircraft_data = data[:data][0]
-        aircraft.update!(name: aircraft_data[:name])
+        aircraft.update!(name: aircraft_data.dig(:name))
       end
     else
-      aircraft.update!(name: 'Unknown Aircraft')
+      reset_fields(aircraft)
     end
+  end
+
+  private
+
+  def reset_fields(aircraft)
+    aircraft.update!(name: 'Unknown Aircraft')
   end
 end

@@ -20,22 +20,25 @@ class FetchAirlineDataJob < ApplicationJob
       data = JSON.parse(response.body, symbolize_names: true)
       Rails.logger.debug ">>> data #{data}"
       if data.dig(:data).blank?
-        airline.update!(
-          name: 'Unknown Airline',
-          logo_url: 'https://res.cloudinary.com/dgjzxdtrf/image/upload/v1743490823/airplane_yix0kw.png'
-        )
+        reset_fields(airline)
       else
         airline_data = data[:data][0]
         airline.update!(
-          name: airline_data[:name],
-          logo_url: airline_data[:logoSymbolUrl]
+          name: airline_data.dig(:name),
+          logo_url: airline_data.dig(:logoSymbolUrl)
         )
       end
     else
-      airline.update!(
-        name: 'Unknown Airline',
-        logo_url: 'https://res.cloudinary.com/dgjzxdtrf/image/upload/v1743490823/airplane_yix0kw.png'
-      )
+      reset_fields(airline)
     end
+  end
+
+  private
+
+  def reset_fields(airline)
+    airline.update!(
+      name: 'Unknown Airline',
+      logo_url: 'https://res.cloudinary.com/dgjzxdtrf/image/upload/v1743490823/airplane_yix0kw.png'
+    )
   end
 end

@@ -20,13 +20,22 @@ class FetchAirportDataJob < ApplicationJob
       data = JSON.parse(response.body, symbolize_names: true)
       Rails.logger.debug ">>> data #{data}"
       if data.dig(:data).blank?
-        airport.update!(name: 'Unknown Airport')
+        reset_fields(airport)
       else
         airport_data = data[:data][0]
-        airport.update!(name: airport_data[:name], timezone: airport_data[:timeZone])
+        airport.update!(
+          name: airport_data.dig(:name),
+          timezone: airport_data.dig(:timeZone)
+        )
       end
     else
-      airport.update!(name: 'Unknown Airport')
+      reset_fields(airport)
     end
+  end
+
+  private
+
+  def reset_fields(airport)
+    airport.update!(name: 'Unknown Airport')
   end
 end

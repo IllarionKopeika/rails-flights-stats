@@ -21,6 +21,7 @@ class Flights::UpdateFlightAfterArrivalJob < ApplicationJob
     }
 
     response = HTTParty.get(url, headers: headers, query: query_params)
+
     if response.success?
       data = JSON.parse(response.body, symbolize_names: true)
       if data.dig(:data).blank?
@@ -31,15 +32,16 @@ class Flights::UpdateFlightAfterArrivalJob < ApplicationJob
           reset_fields(flight)
         else
           actual_data = updated_data[:statusDetails][0]
+          Rails.logger.info "ACTUAL DATA: #{actual_data}"
           flight.update!(
             actual_departure_date: parse_date(actual_data.dig(:departure, :actualTime, :outGate, :local)),
             actual_departure_time: parse_time(actual_data.dig(:departure, :actualTime, :outGate, :local)),
-            departure_status: actual_data.dig(:departure, :actualTime, :outGateTimeliness),
-            departure_timing: actual_data.dig(:departure, :actualTime, :outGateVariation),
+            departure_status: parse_status(actual_data.dig(:departure, :actualTime, :outGateTimeliness)),
+            departure_timing: parse_timing(actual_data.dig(:departure, :actualTime, :outGateVariation)),
             actual_arrival_date: parse_date(actual_data.dig(:arrival, :actualTime, :inGate, :local)),
             actual_arrival_time: parse_time(actual_data.dig(:arrival, :actualTime, :inGate, :local)),
-            arrival_status: actual_data.dig(:arrival, :actualTime, :outGateTimeliness),
-            arrival_timing: actual_data.dig(:arrival, :actualTime, :outGateVariation),
+            arrival_status: parse_status(actual_data.dig(:arrival, :actualTime, :inGateTimeliness)),
+            arrival_timing: parse_timing(actual_data.dig(:arrival, :actualTime, :inGateVariation)),
           )
         end
       end
@@ -51,23 +53,44 @@ class Flights::UpdateFlightAfterArrivalJob < ApplicationJob
   private
 
   def parse_date(date)
-    Time.parse(date).strftime('%Y-%m-%d') if date.present?
+    return '' if date.nil?
+    parsed_date = Time.parse(date).strftime('%Y-%m-%d')
+    Rails.logger.info "PARSED DATE: #{parsed_date}"
+    parsed_date
   end
 
   def parse_time(time)
-    Time.parse(time).strftime('%H:%M') if time.present?
+    return '' if time.nil?
+    parsed_time = Time.parse(time).strftime('%H:%M')
+    Rails.logger.info "PARSED TIME: #{parsed_time}"
+    parsed_time
+  end
+
+  def parse_status(status)
+    return '' if status.nil?
+    parsed_status = status
+    Rails.logger.info "PARSED STATUS: #{parsed_status}"
+    parsed_status
+  end
+
+  def parse_timing(timing)
+    return '' if timing.nil?
+    hours, minutes, _seconds = timing.split(':').map(&:to_i)
+    parsed_timing = hours * 60 + minutes
+    Rails.logger.info "PARSED TIMING: #{parsed_timing}"
+    parsed_timing
   end
 
   def reset_fields(flight)
     flight.update!(
-      actual_departure_date: nil,
-      actual_departure_time: nil,
-      departure_status: nil,
-      departure_timing: nil,
-      actual_arrival_date: nil,
-      actual_arrival_time: nil,
-      arrival_status: nil,
-      arrival_timing: nil,
+      actual_departure_date: '',
+      actual_departure_time: '',
+      departure_status: '',
+      departure_timing: '',
+      actual_arrival_date: '',
+      actual_arrival_time: '',
+      arrival_status: '',
+      arrival_timing: '',
     )
   end
 end

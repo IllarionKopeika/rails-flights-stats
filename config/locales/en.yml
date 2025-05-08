@@ -2,7 +2,7 @@ en:
   flight_not_found: Flights not found :(
   date:
     formats:
-      short: "%b %d %Y"
+      short: "%b %d, %Y"
       long: "%d %B %Y"
   activerecord:
     attributes:
@@ -40,6 +40,9 @@ en:
       flight_number: Flight number
       date: Date
       search: Search
+    upcoming_flights:
+      today: Today
+      tomorrow: Tmr
   passwords:
     change_password:
       title: Change password

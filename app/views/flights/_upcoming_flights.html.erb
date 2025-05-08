@@ -2,8 +2,14 @@
 
   <!-- days to flight -->
   <div class="days-to-flight d-flex flex-column justify-content-center align-items-center me-3 p-1 p-sm-3 text-center">
-    <h4 class="m-0"><%= days_to_flight(flight.departure_date) %></h4>
-    <h6 class="m-0"><%= pluralize_days(days_to_flight(flight.departure_date)) %></h6>
+    <% if days_to_flight(flight.departure_date) == 0 %>
+      <h6 class="m-0"><%= t('.today') %></h4>
+    <% elsif days_to_flight(flight.departure_date) == 1 %>
+      <h6 class="m-0"><%= t('.tomorrow') %></h4>
+    <% else %>
+      <h4 class="m-0"><%= days_to_flight(flight.departure_date) %></h4>
+      <h6 class="m-0"><%= pluralize_days(days_to_flight(flight.departure_date)) %></h6>
+    <% end %>
   </div>
 
   <!-- other info -->

@@ -40,6 +40,9 @@ ru:
       flight_number: Номер рейса
       date: Дата вылета
       search: Поиск
+    upcoming_flights:
+      today: Сегодня
+      tomorrow: Завтра
   passwords:
     change_password:
       title: Изменить пароль

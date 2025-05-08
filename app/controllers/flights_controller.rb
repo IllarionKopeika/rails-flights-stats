@@ -27,7 +27,11 @@ class FlightsController < ApplicationController
     @flight.aircraft = Aircraft.find_or_create_by(code: params[:flight][:aircraft_code])
 
     if @flight.save
-      Flights::ScheduleCompletionJob.set(wait: 1.minute).perform_later(@flight.id)
+      if @flight.upcoming?
+        Flights::ScheduleCompletionJob.set(wait: 1.minute).perform_later(@flight.id)
+      else
+        Flights::UpdateCompletedFlightJob.set(wait: 1.minute).perform_later(@flight.id)
+      end
 
       flash[:success] = t('.create_success')
       redirect_to flights_path

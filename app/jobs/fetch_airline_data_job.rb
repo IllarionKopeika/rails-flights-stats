@@ -18,7 +18,7 @@ class FetchAirlineDataJob < ApplicationJob
     response = HTTParty.get(url, headers: headers, query: querystring)
     if response.success?
       data = JSON.parse(response.body, symbolize_names: true)
-      Rails.logger.debug ">>> data #{data}"
+      Rails.logger.info "DATA: #{data}"
       if data.dig(:data).blank?
         reset_fields(airline)
       else

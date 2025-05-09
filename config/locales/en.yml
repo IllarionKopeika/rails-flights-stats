@@ -34,6 +34,8 @@ en:
       title: My flights
       upcoming: Upcoming
       completed: Completed
+    map:
+      map: Flights' map
     search:
       title: Flights' search
       carrier: Carrier
@@ -95,6 +97,7 @@ en:
       hello_stranger: Hello stranger!
       search: Search flights
       my_flights: My flights
+      map: Map
       profile: Profile
       change_password: Change password
       log_out: Log out

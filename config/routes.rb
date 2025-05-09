@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     root 'flights#index'
     get 'search', to: 'flights#search', as: 'search'
     get 'fetch_flight', to: 'flights#fetch', as: 'fetch_flight'
+    get 'map', to: 'flights#map', as: 'map'
   end
 
   get 'up' => 'rails/health#show', as: :rails_health_check

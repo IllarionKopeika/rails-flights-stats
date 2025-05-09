@@ -34,6 +34,8 @@ ru:
       title: Мои рейсы
       upcoming: Будущие
       completed: Завершенные
+    map:
+      map: Карта полетов
     search:
       title: Поиск рейсов
       carrier: Авиакомпания
@@ -95,6 +97,7 @@ ru:
       hello_stranger: Привет, незнакомец!
       search: Поиск рейсов
       my_flights: Мои рейсы
+      map: Карта
       profile: Мой профиль
       change_password: Изменить пароль
       log_out: Выйти

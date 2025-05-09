@@ -27,21 +27,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js"></script>
   </head>
 
   <body>
     <%= render 'shared/navbar' %>
     <div class="container my-5">
       <%= render 'shared/flash_message' %>
-      <div class="d-block d-sm-none text-center">Screen: xs</div>
-      <div class="d-none d-sm-block d-md-none text-center">Screen: sm</div>
-      <div class="d-none d-md-block d-lg-none text-center">Screen: md</div>
-      <div class="d-none d-lg-block d-xl-none text-center">Screen: lg</div>
-      <div class="d-none d-xl-block d-xxl-none text-center">Screen: xl</div>
-      <div class="d-none d-xxl-block text-center">Screen: xxl</div>
-      <div class="text-center">Local time: <%= Time.now %></div>
-      <div class="text-center">Server time: <%= Time.zone.now %></div>
-      <div class="text-center mb-1">UTC time: <%= Time.now.utc %></div>
+      <div class="d-block d-sm-none text-center">XS</div>
+      <div class="d-none d-sm-block d-md-none text-center">SM</div>
+      <div class="d-none d-md-block d-lg-none text-center">MD</div>
+      <div class="d-none d-lg-block d-xl-none text-center">LG</div>
+      <div class="d-none d-xl-block d-xxl-none text-center">XL</div>
+      <div class="d-none d-xxl-block text-center">XXL</div>
       <%= yield %>
     </div>
   </body>

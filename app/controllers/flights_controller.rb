@@ -57,6 +57,10 @@ class FlightsController < ApplicationController
     end
   end
 
+  def map
+    @completed_flights = Current.user.flights.completed
+  end
+
   private
 
   def flight_status_param

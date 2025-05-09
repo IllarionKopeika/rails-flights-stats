@@ -13,6 +13,5 @@ class Flights::ScheduleCompletionJob < ApplicationJob
     return unless local_time
 
     Flights::CompleteFlightJob.set(wait_until: local_time.utc).perform_later(flight.id)
-    Flights::UpdateFlightAfterArrivalJob.set(wait_until: local_time.utc + 2.hours).perform_later(flight.id)
   end
 end

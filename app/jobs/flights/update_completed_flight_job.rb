@@ -8,10 +8,10 @@ class Flights::UpdateCompletedFlightJob < ApplicationJob
     [flight.departure_airport, flight.arrival_airport].each do |airport|
       country = airport.country
       country.update!(visited: true) unless country.visited?
+      subregion = country.subregion
+      subregion.update!(visited: true) unless subregion.visited?
       region = country.subregion.region
       region.update!(visited: true) unless region.visited?
     end
-
-    Flights::UpdateFlightAfterArrivalJob.perform_now(flight.id)
   end
 end

@@ -40,9 +40,6 @@ en:
       flight_number: Flight number
       date: Date
       search: Search
-    upcoming_flights:
-      today: Today
-      tomorrow: Tmr
   passwords:
     change_password:
       title: Change password

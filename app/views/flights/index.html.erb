@@ -17,12 +17,12 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="upcoming-tab-pane" role="tabpanel" aria-labelledby="upcoming-tab" tabindex="0">
           <% @upcoming_flights.each do |flight| %>
-            <%= render 'upcoming_flights', flight: flight %>
+            <%= render 'flight', flight: flight %>
           <% end %>
         </div>
         <div class="tab-pane fade" id="completed-tab-pane" role="tabpanel" aria-labelledby="completed-tab" tabindex="0">
           <% @completed_flights.each do |flight| %>
-            <%= render 'completed_flights', flight: flight %>
+            <%= render 'flight', flight: flight %>
           <% end %>
         </div>
       </div>

@@ -14,4 +14,12 @@ class Flight < ApplicationRecord
   validates :number, presence: true
   validates :departure_date, presence: true
   validates :number, uniqueness: { scope: :departure_date, message: :duplicate_flight }
+
+  def from_coordinates
+    [departure_airport.latitude, departure_airport.longitude] if departure_airport
+  end
+
+  def to_coordinates
+    [arrival_airport.latitude, arrival_airport.longitude] if arrival_airport
+  end
 end

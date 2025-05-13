@@ -24,7 +24,7 @@ export default class extends Controller {
 
   #settings() {
     this.map.addControl(new mapboxgl.NavigationControl(), 'top-right')
-    this.map.setMinZoom(1)
+    this.map.setMinZoom(0)
     this.map.setMaxZoom(10)
   }
 
@@ -71,7 +71,7 @@ export default class extends Controller {
           },
           paint: {
             'line-color': '#441752',
-            'line-width': 3,
+            'line-width': 2,
           }
         })
       })

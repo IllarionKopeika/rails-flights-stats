@@ -59,10 +59,19 @@ class FlightsController < ApplicationController
 
   def map
     @completed_flights = Current.user.flights.completed.includes(:departure_airport, :arrival_airport)
+
     @flights = @completed_flights.map do |flight|
       {
         from_coordinates: flight.from_coordinates,
         to_coordinates: flight.to_coordinates
+      }
+    end
+
+    airports = @completed_flights.flat_map { |flight| [ flight.departure_airport, flight.arrival_airport ] }.uniq
+    @markers = airports.map do |airport|
+      {
+        lat: airport.latitude,
+        lng: airport.longitude
       }
     end
   end

@@ -4,7 +4,8 @@ import mapboxgl from 'mapbox-gl'
 export default class extends Controller {
   static values = {
     apiKey: String,
-    flights: Array
+    flights: Array,
+    markers: Array
   }
 
   connect() {
@@ -13,18 +14,23 @@ export default class extends Controller {
       container: this.element,
       style: 'mapbox://styles/mapbox/streets-v12',
       projection: 'mercator',
-      center: [30.0444, 31.2357],
-      zoom: 3,
+      // center: [30.0444, 31.2357],
+      // zoom: 3
     })
 
     this.#settings()
     this.#setLanguage()
-    this.#addStringLines()
+
+    this.map.on('load', () => {
+      this.#addStringLines()
+      this.#addMarkers()
+      this.#fitMapToMarkers()
+    })
   }
 
   #settings() {
     this.map.addControl(new mapboxgl.NavigationControl(), 'top-right')
-    this.map.setMinZoom(0)
+    this.map.setMinZoom(1)
     this.map.setMaxZoom(10)
   }
 
@@ -43,38 +49,50 @@ export default class extends Controller {
   }
 
   #addStringLines() {
-    this.map.on('load', () => {
-      this.flightsValue.forEach((flight, index) => {
-        const lineId = `flight-line-${index}`
+    this.flightsValue.forEach((flight, index) => {
+      const lineId = `flight-line-${index}`
 
-        this.map.addSource(lineId, {
-          type: 'geojson',
-          data: {
-            type: 'Feature',
-            geometry: {
-              type: 'LineString',
-              coordinates: [
-                [flight.from_coordinates[1], flight.from_coordinates[0]],
-                [flight.to_coordinates[1], flight.to_coordinates[0]]
-              ]
-            }
+      this.map.addSource(lineId, {
+        type: 'geojson',
+        data: {
+          type: 'Feature',
+          geometry: {
+            type: 'LineString',
+            coordinates: [
+              [flight.from_coordinates[1], flight.from_coordinates[0]],
+              [flight.to_coordinates[1], flight.to_coordinates[0]]
+            ]
           }
-        })
+        }
+      })
 
-        this.map.addLayer({
-          id: lineId,
-          type: 'line',
-          source: lineId,
-          layout: {
-            'line-join': 'round',
-            'line-cap': 'round'
-          },
-          paint: {
-            'line-color': '#441752',
-            'line-width': 2,
-          }
-        })
+      this.map.addLayer({
+        id: lineId,
+        type: 'line',
+        source: lineId,
+        layout: {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        paint: {
+          'line-color': '#441752',
+          'line-width': 2,
+        }
       })
     })
+  }
+
+  #addMarkers() {
+    this.markersValue.forEach((marker) => {
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(this.map)
+    })
+  }
+
+  #fitMapToMarkers() {
+    const bounds = new mapboxgl.LngLatBounds()
+    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.map.fitBounds(bounds, { padding: 30, duration: 1500 })
   }
 }

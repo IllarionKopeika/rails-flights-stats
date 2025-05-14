@@ -1,0 +1,7 @@
+<div class="d-flex flex-column">
+  <div class="d-flex justify-content-evenly align-items-center">
+    <h4 class="text-center"><%= airport.code %></h4>
+    <img class="flag-img" src="https://flagcdn.com/<%= airport.country.code.downcase %>.svg" alt="<%= airport.country.code %>">
+  </div>
+  <p class="text-center"><%= airport.name %></p>
+</div>

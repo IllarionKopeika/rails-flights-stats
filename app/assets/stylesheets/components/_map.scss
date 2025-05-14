@@ -2,4 +2,43 @@
   background: rgba(white,0.7);
   border: 1px solid $primary;
   border-radius: 5px;
+  .mapboxgl-popup {
+    max-width: 200px !important;
+    border: 1px solid $primary;
+    border-radius: 5px;
+  }
+  .mapboxgl-popup-tip {
+    display: none;
+  }
+  .mapboxgl-popup-content {
+    padding: 10px !important;
+    font-family: "Tektur", "Helvetica", "sans-serif";
+    background: rgb(250,250,250);
+    h4 {
+      color: $info;
+      margin-bottom: 0;
+    }
+    .flag-img {
+      width: 45px;
+      height: 30px;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .mapboxgl-popup-close-button {
+    color: $primary;
+  }
+  @media (max-width: 576px) {
+    h4 {
+      font-size: 18px;
+    }
+    .flag-img {
+      width: 30px !important;
+      height: 20px !important;
+    }
+    p {
+      font-size: 10px;
+    }
+  }
 }

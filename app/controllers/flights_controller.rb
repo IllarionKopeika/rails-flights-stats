@@ -71,7 +71,9 @@ class FlightsController < ApplicationController
     @markers = airports.map do |airport|
       {
         lat: airport.latitude,
-        lng: airport.longitude
+        lng: airport.longitude,
+        popup_html: render_to_string(partial: 'popup', locals: { airport: airport }),
+        marker_html: render_to_string(partial: 'marker')
       }
     end
   end

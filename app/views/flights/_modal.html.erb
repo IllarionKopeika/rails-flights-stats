@@ -1,0 +1,17 @@
+<div class="modal-dialog modal-dialog-centered modal-lg custom-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title fs-5" id="flightMapModalLabel"><%= flight.departure_airport.code %> - <%= flight.arrival_airport.code %></h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div id='map'
+           style='width: 100%; height: 500px;'
+           data-controller='modal-map'
+           data-modal-map-api-key-value='<%= ENV['MAPBOX_API_KEY'] %>'
+           data-modal-map-departure-coordinates-value='<%= [flight.departure_airport.longitude, flight.departure_airport.latitude] %>'
+           data-modal-map-arrival-coordinates-value='<%= [flight.arrival_airport.longitude, flight.arrival_airport.latitude] %>'>
+      </div>
+    </div>
+  </div>
+</div>

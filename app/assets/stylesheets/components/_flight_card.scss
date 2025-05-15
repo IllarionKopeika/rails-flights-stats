@@ -8,6 +8,10 @@
     height: 30px;
     object-fit: contain;
   }
+  .map-icon {
+    color: $primary;
+    font-size: 20px;
+  }
   .aircraft-icon {
     color: $info;
     font-size: 20px;
@@ -28,7 +32,7 @@
       width: 20px;
       height: 20px;
     }
-    .aircraft-icon {
+    .aircraft-icon, .map-icon {
       font-size: 14px;
     }
     h4 {

@@ -25,8 +25,12 @@
           <% end %>
         </div>
         <div class="tab-pane fade" id="completed-tab-pane" role="tabpanel" aria-labelledby="completed-tab" tabindex="0">
-          <% @completed_flights.each do |flight| %>
-            <%= render 'flight', flight: flight %>
+          <% if @completed_flights.count == 0 %>
+            <%= render 'no_flights' %>
+          <% else %>
+            <% @completed_flights.each do |flight| %>
+              <%= render 'flight', flight: flight %>
+            <% end %>
           <% end %>
         </div>
       </div>

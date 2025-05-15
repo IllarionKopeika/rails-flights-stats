@@ -36,6 +36,8 @@ ru:
       completed: Завершенные
     map:
       map: Карта полетов
+    no_flights:
+      flight_not_found: Рейсов не найдено :(
     search:
       title: Поиск рейсов
       carrier: Авиакомпания

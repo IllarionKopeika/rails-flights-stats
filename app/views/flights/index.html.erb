@@ -16,8 +16,12 @@
       </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="upcoming-tab-pane" role="tabpanel" aria-labelledby="upcoming-tab" tabindex="0">
-          <% @upcoming_flights.each do |flight| %>
-            <%= render 'flight', flight: flight %>
+          <% if @upcoming_flights.count == 0 %>
+            <%= render 'no_flights' %>
+          <% else %>
+            <% @upcoming_flights.each do |flight| %>
+              <%= render 'flight', flight: flight %>
+            <% end %>
           <% end %>
         </div>
         <div class="tab-pane fade" id="completed-tab-pane" role="tabpanel" aria-labelledby="completed-tab" tabindex="0">

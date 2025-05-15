@@ -36,6 +36,8 @@ en:
       completed: Completed
     map:
       map: Flights' map
+    no_flights:
+      flight_not_found: Flights not found :(
     search:
       title: Flights' search
       carrier: Carrier

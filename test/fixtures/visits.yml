@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  visitable: one
+  visitable_type: Visitable
+  count: 1
+
+two:
+  user: two
+  visitable: two
+  visitable_type: Visitable
+  count: 1

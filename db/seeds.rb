@@ -6,13 +6,13 @@
 # puts 'done!'
 
 # puts 'create regions'
-# Region.create!(name: { ru: 'Африка', en: 'Africa' }, visited: false)
-# Region.create!(name: { ru: 'Азия', en: 'Asia' }, visited: false)
-# Region.create!(name: { ru: 'Европа', en: 'Europe' }, visited: false)
-# Region.create!(name: { ru: 'Южная Америка', en: 'South America' }, visited: false)
-# Region.create!(name: { ru: 'Северная Америка', en: 'North America' }, visited: false)
-# Region.create!(name: { ru: 'Австралия и Океания', en: 'Australia and Oceania' }, visited: false)
-# Region.create!(name: { ru: 'Антарктида', en: 'Antarctica' }, visited: false)
+# Region.create!(name: { ru: 'Африка', en: 'Africa' })
+# Region.create!(name: { ru: 'Азия', en: 'Asia' })
+# Region.create!(name: { ru: 'Европа', en: 'Europe' })
+# Region.create!(name: { ru: 'Южная Америка', en: 'South America' })
+# Region.create!(name: { ru: 'Северная Америка', en: 'North America' })
+# Region.create!(name: { ru: 'Австралия и Океания', en: 'Australia and Oceania' })
+# Region.create!(name: { ru: 'Антарктида', en: 'Antarctica' })
 # puts 'done!'
 
 # puts 'create subregions'
@@ -54,6 +54,6 @@
 #   code = country['cca2']
 #   flag_url = country['flags']['svg']
 #   puts "#{ru_name} - #{en_name} - #{code}"
-#   Country.create!(name: { ru: ru_name, en: en_name }, code: code, flag_url: flag_url, visited: false, subregion: Subregion.find(24))
+#   Country.create!(name: { ru: ru_name, en: en_name }, code: code, flag_url: flag_url, subregion: Subregion.find(24))
 # end
 # puts 'done'

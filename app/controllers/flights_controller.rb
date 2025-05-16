@@ -29,8 +29,6 @@ class FlightsController < ApplicationController
     if @flight.save
       if @flight.upcoming?
         Flights::ScheduleCompletionJob.set(wait: 1.minute).perform_later(@flight.id)
-      else
-        Flights::UpdateCompletedFlightJob.set(wait: 1.minute).perform_later(@flight.id)
       end
 
       flash[:success] = t('.create_success')

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_074939) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_16_071851) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -46,7 +46,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_074939) do
     t.jsonb "name", default: {}, null: false
     t.string "code"
     t.string "flag_url"
-    t.boolean "visited", default: false
     t.bigint "subregion_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -80,7 +79,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_074939) do
 
   create_table "regions", force: :cascade do |t|
     t.jsonb "name", default: {}, null: false
-    t.boolean "visited", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_regions_on_name", using: :gin
@@ -100,7 +98,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_074939) do
     t.bigint "region_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "visited", default: false
     t.index ["name"], name: "index_subregions_on_name", using: :gin
     t.index ["region_id"], name: "index_subregions_on_region_id"
   end

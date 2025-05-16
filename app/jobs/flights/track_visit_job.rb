@@ -1,11 +1,9 @@
-class Flights::CompleteFlightJob < ApplicationJob
+class Flights::TrackVisitJob < ApplicationJob
   queue_as :default
 
   def perform(flight_id)
     flight = Flight.find_by(id: flight_id)
-    return unless flight&.upcoming?
-
-    flight.update!(status: :completed)
+    return unless flight&.completed? && flight.user.present?
 
     user = flight.user
     country = flight.arrival_airport.country

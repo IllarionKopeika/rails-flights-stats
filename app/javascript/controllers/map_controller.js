@@ -64,11 +64,13 @@ export default class extends Controller {
     this.flightsValue.forEach((flight, index) => {
       const from = [flight.from_coordinates[1], flight.from_coordinates[0]]
       const to = [flight.to_coordinates[1], flight.to_coordinates[0]]
-      const lineId = `flight-curve-${index}`
-
       const curved = this.#createBezierCurve(from, to)
 
-      this.map.addSource(lineId, {
+      const sourceId = `flight-curve-${index}`
+      const shadowLayerId = `flight-curve-shadow-${index}`
+      const lineLayerId = `flight-curve-line-${index}`
+
+      this.map.addSource(sourceId, {
         type: 'geojson',
         data: {
           type: 'Feature',
@@ -80,15 +82,29 @@ export default class extends Controller {
       })
 
       this.map.addLayer({
-        id: lineId,
+        id: shadowLayerId,
         type: 'line',
-        source: lineId,
+        source: sourceId,
         layout: {
           'line-join': 'round',
           'line-cap': 'round'
         },
         paint: {
           'line-color': '#441752',
+          'line-width': 4,
+        }
+      })
+
+      this.map.addLayer({
+        id: lineLayerId,
+        type: 'line',
+        source: sourceId,
+        layout: {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        paint: {
+          'line-color': '#A888B5',
           'line-width': 2,
         }
       })

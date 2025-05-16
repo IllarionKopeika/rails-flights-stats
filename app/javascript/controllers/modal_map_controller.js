@@ -56,13 +56,19 @@ export default class extends Controller {
 
   #addMarkers() {
     const createMarker = (coordinates) => {
-      const img = new Image()
+      const container = document.createElement("div")
+      container.style.width = "15px"
+      container.style.height = "15px"
+
+      const img = document.createElement("img")
       img.src = "/assets/logo.png"
       img.alt = "Logo"
-      img.width = 20
-      img.height = 20
+      img.style.width = "100%"
+      img.style.height = "100%"
 
-      new mapboxgl.Marker(img)
+      container.appendChild(img)
+
+      new mapboxgl.Marker(container)
         .setLngLat(coordinates)
         .addTo(this.map)
     }
@@ -74,15 +80,36 @@ export default class extends Controller {
   #addLine() {
     const curved = this.#createBezierCurve(this.departureCoordinatesValue, this.arrivalCoordinatesValue)
 
+    const routeGeoJSON = {
+      type: 'Feature',
+      geometry: {
+        type: 'LineString',
+        coordinates: curved
+      }
+    }
+
+    this.map.addSource("flightRouteOutline", {
+      type: "geojson",
+      data: routeGeoJSON
+    })
+
+    this.map.addLayer({
+      id: "flightRouteOutlineLine",
+      type: "line",
+      source: "flightRouteOutline",
+      layout: {
+        "line-join": "round",
+        "line-cap": "round"
+      },
+      paint: {
+        'line-color': '#441752',
+        'line-width': 4,
+      }
+    })
+
     this.map.addSource("flightRoute", {
       type: "geojson",
-      data: {
-        type: 'Feature',
-        geometry: {
-          type: 'LineString',
-          coordinates: curved
-        }
-      }
+      data: routeGeoJSON
     })
 
     this.map.addLayer({
@@ -94,8 +121,8 @@ export default class extends Controller {
         "line-cap": "round"
       },
       paint: {
-        'line-color': '#441752',
-        'line-width': 2,
+        "line-color": "#A888B5",
+        "line-width": 2
       }
     })
   }

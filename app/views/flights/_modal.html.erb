@@ -12,7 +12,9 @@
            data-controller='modal-map'
            data-modal-map-api-key-value='<%= ENV['MAPBOX_API_KEY'] %>'
            data-modal-map-departure-coordinates-value='<%= [flight.departure_airport.longitude, flight.departure_airport.latitude] %>'
-           data-modal-map-arrival-coordinates-value='<%= [flight.arrival_airport.longitude, flight.arrival_airport.latitude] %>'>
+           data-modal-map-arrival-coordinates-value='<%= [flight.arrival_airport.longitude, flight.arrival_airport.latitude] %>'
+           data-modal-map-departure-popup-value='<%= raw(render(partial: 'popup', locals: { airport: flight.departure_airport })) %>'
+           data-modal-map-arrival-popup-value='<%= raw(render(partial: 'popup', locals: { airport: flight.arrival_airport })) %>'>
       </div>
     </div>
   </div>

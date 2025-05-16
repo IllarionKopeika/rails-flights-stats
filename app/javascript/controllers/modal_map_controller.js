@@ -6,7 +6,10 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     departureCoordinates: Array,
-    arrivalCoordinates: Array
+    arrivalCoordinates: Array,
+    marker: String,
+    departurePopup: String,
+    arrivalPopup: String
   }
 
   connect() {
@@ -55,7 +58,9 @@ export default class extends Controller {
   }
 
   #addMarkers() {
-    const createMarker = (coordinates) => {
+    const createMarker = (coordinates, popupHTML) => {
+      const popup = new mapboxgl.Popup().setHTML(popupHTML)
+
       const container = document.createElement("div")
       container.style.width = "15px"
       container.style.height = "15px"
@@ -70,11 +75,12 @@ export default class extends Controller {
 
       new mapboxgl.Marker(container)
         .setLngLat(coordinates)
+        .setPopup(popup)
         .addTo(this.map)
     }
 
-    createMarker(this.departureCoordinatesValue)
-    createMarker(this.arrivalCoordinatesValue)
+    createMarker(this.departureCoordinatesValue, this.departurePopupValue)
+    createMarker(this.arrivalCoordinatesValue, this.arrivalPopupValue)
   }
 
   #addLine() {

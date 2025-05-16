@@ -16,9 +16,8 @@ export default class extends Controller {
 
   #initMap() {
     mapboxgl.accessToken = this.apiKeyValue
-    const mapElement = document.getElementById("map")
     this.map = new mapboxgl.Map({
-      container: mapElement,
+      container: this.element,
       style: 'mapbox://styles/mapbox/streets-v12',
       projection: 'mercator'
     })

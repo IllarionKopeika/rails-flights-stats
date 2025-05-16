@@ -1,19 +1,22 @@
 <div class="flight-card d-flex flex-column mb-2 p-3">
 
+  <% modal_id = "flightMapModal-#{flight.id}" %>
   <!-- airline logo, flight number & date -->
   <div class="d-flex justify-content-around align-items-center mb-2">
     <div class="d-flex align-items-center gap-2">
       <img src="<%= flight.airline.logo_url %>" alt="<%= flight.airline.name %>">
       <p class="m-0"><%= flight.number %></p>
     </div>
-    <% if flight.upcoming? %>
-      <div>
-        <i type="button" data-bs-toggle="modal" data-bs-target="#flightMapModal" class="map-icon fa-solid fa-map-location-dot"></i>
-        <div class="modal fade" id="flightMapModal" tabindex="-1" aria-labelledby="flightMapModalLabel" aria-hidden="true">
-          <%= render 'modal', flight: flight %>
-        </div>
+    <div>
+      <i type="button"
+         data-bs-toggle="modal"
+         data-bs-target="#<%= "#{modal_id}" %>"
+         class="map-icon fa-solid fa-map-location-dot">
+      </i>
+      <div class="modal fade" id="<%= modal_id %>" tabindex="-1" aria-labelledby="<%= modal_id %>Label" aria-hidden="true">
+        <%= render 'modal', flight: flight, modal_id: modal_id %>
       </div>
-    <% end %>
+    </div>
     <div>
       <p class="m-0"><%= format_date(flight.departure_date) %></p>
     </div>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  flightstatable: one
+  flightstatable_type: Flightstatable
+  count: 1
+
+two:
+  user: two
+  flightstatable: two
+  flightstatable_type: Flightstatable
+  count: 1

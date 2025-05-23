@@ -1,28 +1,15 @@
-class Flights::CompleteFlightJob < ApplicationJob
+class Flights::TrackFlightStatsJob < ApplicationJob
   queue_as :default
 
   def perform(flight_id)
     flight = Flight.find_by(id: flight_id)
-    return unless flight&.upcoming?
-
-    flight.update!(status: :completed)
+    return unless flight&.completed? && flight.user.present?
 
     user = flight.user
-
-    country = flight.arrival_airport.country
-    subregion = country.subregion
-    region = subregion.region
-
     aircraft = flight.aircraft
     airline = flight.airline
     departure_airport = flight.departure_airport
     arrival_airport = flight.arrival_airport
-
-    [country, subregion, region].each do |visitable|
-      visit = Visit.find_or_initialize_by(user: user, visitable: visitable)
-      visit.count += 1
-      visit.save!
-    end
 
     [aircraft, airline, departure_airport, arrival_airport].each do |flightstatable|
       flight_stat = FlightStat.find_or_initialize_by(user: user, flightstatable: flightstatable)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_16_085858) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_23_021946) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -51,6 +51,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_085858) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_countries_on_name", using: :gin
     t.index ["subregion_id"], name: "index_countries_on_subregion_id"
+  end
+
+  create_table "flight_stats", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "flightstatable_type", null: false
+    t.bigint "flightstatable_id", null: false
+    t.integer "count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flightstatable_type", "flightstatable_id"], name: "index_flight_stats_on_flightstatable"
+    t.index ["user_id"], name: "index_flight_stats_on_user_id"
   end
 
   create_table "flights", force: :cascade do |t|
@@ -124,6 +135,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_085858) do
 
   add_foreign_key "airports", "countries"
   add_foreign_key "countries", "subregions"
+  add_foreign_key "flight_stats", "users"
   add_foreign_key "flights", "aircrafts"
   add_foreign_key "flights", "airlines"
   add_foreign_key "flights", "airports", column: "arrival_airport_id"

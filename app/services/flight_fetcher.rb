@@ -75,7 +75,7 @@ class FlightFetcher
         arrival_time_utc: arrival_utc.slice(11, 5),
         duration: duration,
         distance: flight.dig(:greatCircleDistance, :km),
-        aircraft_code: flight.dig(:aircraft, :model)
+        aircraft: flight.dig(:aircraft, :model)
       }
     end
   end

@@ -1,6 +1,4 @@
 class FlightsController < ApplicationController
-  require 'date'
-
   def index
     @upcoming_flights = Current.user.flights.upcoming.order(departure_date: :asc, departure_time: :asc)
     @completed_flights = Current.user.flights.completed.order(departure_date: :desc, departure_time: :desc)
@@ -24,7 +22,7 @@ class FlightsController < ApplicationController
       airport.country = Country.find_by(code: params[:flight][:arrival_country_code])
     end
     @flight.airline = Airline.find_or_create_by(code: params[:flight][:airline_code])
-    @flight.aircraft = Aircraft.find_or_create_by(code: params[:flight][:aircraft_code])
+    @flight.aircraft = Aircraft.find_or_create_by(name: params[:flight][:aircraft])
 
     if @flight.save
       if @flight.upcoming?
@@ -90,16 +88,21 @@ class FlightsController < ApplicationController
   end
 
   def format_date(date)
-    return date.to_date.iso8601 if date.respond_to?(:to_date)
-    return date if date.match?(/^\d{4}-\d{2}-\d{2}$/)
-
     months = {
-      'Янв' => 'Jan', 'Фев' => 'Feb', 'Мар' => 'Mar', 'Апр' => 'Apr',
-      'Май' => 'May', 'Июн' => 'Jun', 'Июл' => 'Jul', 'Авг' => 'Aug',
-      'Сен' => 'Sep', 'Окт' => 'Oct', 'Ноя' => 'Nov', 'Дек' => 'Dec'
+      'Jan' => '01', 'Feb' => '02', 'Mar' => '03', 'Apr' => '04',
+      'May' => '05', 'Jun' => '06', 'Jul' => '07', 'Aug' => '08',
+      'Sep' => '09', 'Oct' => '10', 'Nov' => '11', 'Dec' => '12',
+      'Янв' => '01', 'Фев' => '02', 'Март' => '03', 'Апр' => '04',
+      'Май' => '05', 'Июнь' => '06', 'Июль' => '07', 'Авг' => '08',
+      'Сен' => '09', 'Окт' => '10', 'Ноя' => '11', 'Дек' => '12'
     }
 
-    localized = date.gsub(/(Янв|Фев|Мар|Апр|Май|Июн|Июл|Авг|Сен|Окт|Ноя|Дек)/) { |m| months[m] }
-    Date.parse(localized).iso8601
+    if date =~ /\A(\d{2})-([A-Za-zА-Яа-я]+)-(\d{4})\z/
+      day, month_str, year = $1, $2, $3
+      month = months[month_str]
+      return "#{year}-#{month}-#{day}" if month
+    end
+
+    date
   end
 end

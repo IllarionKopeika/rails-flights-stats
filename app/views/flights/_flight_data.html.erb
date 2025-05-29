@@ -50,22 +50,22 @@
 
       <div class="d-none">
         <%= f.hidden_field :number, value: @flight_data[:flight_number] %>
+        <%= f.hidden_field :departure_airport_code, value: @flight_data[:departure_airport] %>
+        <%= f.hidden_field :departure_country_code, value: @flight_data[:departure_country_code] %>
         <%= f.hidden_field :departure_date, value: @flight_data[:departure_date] %>
         <%= f.hidden_field :departure_time, value: @flight_data[:departure_time] %>
         <%= f.hidden_field :departure_date_utc, value: @flight_data[:departure_date_utc] %>
         <%= f.hidden_field :departure_time_utc, value: @flight_data[:departure_time_utc] %>
-        <%= f.hidden_field :departure_country_code, value: @flight_data[:departure_country_code] %>
+        <%= f.hidden_field :arrival_airport_code, value: @flight_data[:arrival_airport] %>
+        <%= f.hidden_field :arrival_country_code, value: @flight_data[:arrival_country_code] %>
         <%= f.hidden_field :arrival_date, value: @flight_data[:arrival_date] %>
         <%= f.hidden_field :arrival_time, value: @flight_data[:arrival_time] %>
         <%= f.hidden_field :arrival_date_utc, value: @flight_data[:arrival_date_utc] %>
         <%= f.hidden_field :arrival_time_utc, value: @flight_data[:arrival_time_utc] %>
-        <%= f.hidden_field :arrival_country_code, value: @flight_data[:arrival_country_code] %>
         <%= f.hidden_field :duration, value: @flight_data[:duration] %>
         <%= f.hidden_field :distance, value: @flight_data[:distance] %>
-        <%= f.hidden_field :airline_code, value: @flight_data[:flight_number].split.first %>
-        <%= f.hidden_field :aircraft_code, value: @flight_data[:aircraft_code] %>
-        <%= f.hidden_field :departure_airport_code, value: @flight_data[:departure_airport] %>
-        <%= f.hidden_field :arrival_airport_code, value: @flight_data[:arrival_airport] %>
+        <%= f.hidden_field :airline_code, value: @flight_data[:flight_number].slice(0, 2) %>
+        <%= f.hidden_field :aircraft, value: @flight_data[:aircraft] %>
       </div>
 
       <%= f.submit t('.add_flight'), class: 'btn btn-info w-100 text-white', style: 'font-size: 16px;' %>

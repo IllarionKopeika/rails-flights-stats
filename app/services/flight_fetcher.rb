@@ -1,8 +1,6 @@
 class FlightFetcher
   require 'httparty'
 
-  API_URL = 'https://flight-info-api.p.rapidapi.com/status'.freeze
-
   def initialize(carrier, flight_number, date)
     @carrier = carrier
     @flight_number = flight_number
@@ -10,7 +8,9 @@ class FlightFetcher
   end
 
   def call
-    response = HTTParty.get(API_URL, headers: headers, query: query_params)
+    url = "https://aerodatabox.p.rapidapi.com/flights/number/#{@carrier}#{@flight_number}/#{@date}"
+    Rails.logger.debug ">>> URL #{url}"
+    response = HTTParty.get(url, headers: headers, query: query_params)
     Rails.logger.debug ">>> flight search res #{response}"
 
     if response.success?
@@ -34,39 +34,48 @@ class FlightFetcher
 
   def query_params
     {
-      version: 'v2',
-      codeType: 'IATA',
-      carrierCode: @carrier,
-      flightNumber: @flight_number,
-      departureDatetime: @date
+      withAircraftImage: 'false',
+      withLocation: 'false',
+      dateLocalRole: 'both'
     }
   end
 
   def parse_response(response)
     flight_data = JSON.parse(response.body, symbolize_names: true)
 
-    if flight_data.dig(:data).blank?
+    if flight_data.empty?
       { message: I18n.t('flight_not_found') }
     else
-      flight = flight_data[:data][0]
+      flight = flight_data[0]
+      flight_number = flight.dig(:number)
+      departure_local = flight.dig(:departure, :scheduledTime, :local)
+      departure_utc = flight.dig(:departure, :scheduledTime, :utc)
+      arrival_local = flight.dig(:arrival, :scheduledTime, :local)
+      arrival_utc = flight.dig(:arrival, :scheduledTime, :utc)
+      duration =
+        if departure_utc && arrival_utc
+          ((Time.parse(arrival_utc) - Time.parse(departure_utc)) / 60).to_i
+        else
+          nil
+        end
 
       {
-        flight_number: "#{flight.dig(:carrier, :iata)} #{flight[:flightNumber]}",
-        departure_country_code: flight.dig(:departure, :country, :code),
+        flight_number: flight_number.delete(' '),
+        departure_country_code: flight.dig(:departure, :airport, :countryCode),
         departure_airport: flight.dig(:departure, :airport, :iata),
-        departure_date: flight.dig(:departure, :date, :local),
-        departure_date_utc: flight.dig(:departure, :date, :utc),
-        departure_time: flight.dig(:departure, :time, :local),
-        departure_time_utc: flight.dig(:departure, :time, :utc),
-        arrival_country_code: flight.dig(:arrival, :country, :code),
+        departure_date: departure_local.slice(0, 10),
+        departure_date_utc: departure_utc.slice(0, 10),
+        departure_time: departure_local.slice(11, 5),
+        departure_time_utc: departure_utc.slice(11, 5),
+        arrival_country_code: flight.dig(:arrival, :airport, :countryCode),
         arrival_airport: flight.dig(:arrival, :airport, :iata),
-        arrival_date: flight.dig(:arrival, :date, :local),
-        arrival_date_utc: flight.dig(:arrival, :date, :utc),
-        arrival_time: flight.dig(:arrival, :time, :local),
-        arrival_time_utc: flight.dig(:arrival, :time, :utc),
-        duration: flight[:elapsedTime],
-        distance: flight.dig(:distance, :accumulatedGreatCircleKilometers),
-        aircraft_code: flight.dig(:aircraftType, :iata)
+        arrival_date: arrival_local.slice(0, 10),
+        arrival_date_utc: arrival_utc.slice(0, 10),
+        arrival_time: arrival_local.slice(11, 5),
+        arrival_time_utc: arrival_utc.slice(11, 5),
+        duration: duration,
+        distance: flight.dig(:greatCircleDistance, :km),
+        aircraft_code: flight.dig(:aircraft, :model)
       }
     end
   end

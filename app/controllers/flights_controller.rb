@@ -90,11 +90,16 @@ class FlightsController < ApplicationController
   end
 
   def format_date(date)
+    return date.to_date.iso8601 if date.respond_to?(:to_date)
+    return date if date.match?(/^\d{4}-\d{2}-\d{2}$/)
+
     months = {
       'Янв' => 'Jan', 'Фев' => 'Feb', 'Мар' => 'Mar', 'Апр' => 'Apr',
       'Май' => 'May', 'Июн' => 'Jun', 'Июл' => 'Jul', 'Авг' => 'Aug',
       'Сен' => 'Sep', 'Окт' => 'Oct', 'Ноя' => 'Nov', 'Дек' => 'Dec'
     }
-    date.match?(/[а-яА-Я]/) ? date.gsub(/(Янв|Фев|Мар|Апр|Май|Июн|Июл|Авг|Сен|Окт|Ноя|Дек)/, months) : date
+
+    localized = date.gsub(/(Янв|Фев|Мар|Апр|Май|Июн|Июл|Авг|Сен|Окт|Ноя|Дек)/) { |m| months[m] }
+    Date.parse(localized).iso8601
   end
 end

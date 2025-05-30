@@ -22,4 +22,12 @@ class Flight < ApplicationRecord
   def to_coordinates
     [arrival_airport.latitude, arrival_airport.longitude] if arrival_airport
   end
+
+  def international?
+    departure_airport&.country_id != arrival_airport&.country_id
+  end
+
+  def domestic?
+    !international?
+  end
 end

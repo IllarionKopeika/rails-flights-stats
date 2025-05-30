@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_23_071901) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_30_023345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -81,20 +81,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_23_071901) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.string "actual_departure_date"
-    t.string "actual_departure_time"
-    t.string "departure_status"
-    t.string "departure_timing"
-    t.string "actual_arrival_date"
-    t.string "actual_arrival_time"
-    t.string "arrival_status"
-    t.string "arrival_timing"
     t.index ["aircraft_id"], name: "index_flights_on_aircraft_id"
     t.index ["airline_id"], name: "index_flights_on_airline_id"
     t.index ["arrival_airport_id"], name: "index_flights_on_arrival_airport_id"
     t.index ["departure_airport_id"], name: "index_flights_on_departure_airport_id"
     t.index ["number", "departure_date"], name: "index_flights_on_number_and_departure_date", unique: true
     t.index ["user_id"], name: "index_flights_on_user_id"
+  end
+
+  create_table "general_stats", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "total_flights", default: 0, null: false
+    t.integer "international_flights", default: 0, null: false
+    t.integer "domestic_flights", default: 0, null: false
+    t.integer "total_duration", default: 0, null: false
+    t.float "total_distance", default: 0.0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_general_stats_on_user_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -150,6 +154,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_23_071901) do
   add_foreign_key "flights", "airports", column: "arrival_airport_id"
   add_foreign_key "flights", "airports", column: "departure_airport_id"
   add_foreign_key "flights", "users"
+  add_foreign_key "general_stats", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "subregions", "regions"
   add_foreign_key "visits", "users"

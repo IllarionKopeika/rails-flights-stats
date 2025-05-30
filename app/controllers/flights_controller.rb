@@ -30,6 +30,7 @@ class FlightsController < ApplicationController
       elsif @flight.completed?
         Flights::TrackVisitJob.set(wait: 1.minute).perform_later(@flight.id)
         Flights::TrackFlightStatsJob.set(wait: 1.minute).perform_later(@flight.id)
+        Flights::CalculateGeneralStatJob.set(wait: 1.minute).perform_later(@flight.id)
       end
 
       flash[:success] = t('.create_success')

@@ -42,5 +42,18 @@ class Flights::CompleteFlightJob < ApplicationJob
       airport_stat.count += 1
       airport_stat.save!
     end
+
+    general_stat = flight.user.general_stat
+    general_stat.update!(
+      total_flights: general_stat.total_flights + 1,
+      total_duration: general_stat.total_duration + flight.duration,
+      total_distance: general_stat.total_distance + flight.distance
+    )
+
+    if flight.international?
+      general_stat.increment!(:international_flights)
+    else
+      general_stat.increment!(:domestic_flights)
+    end
   end
 end

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  total_flights: 1
+  international_flights: 1
+  domestic_flights: 1
+  total_duration: 1
+  total_distance: 1.5
+
+two:
+  user: two
+  total_flights: 1
+  international_flights: 1
+  domestic_flights: 1
+  total_duration: 1
+  total_distance: 1.5

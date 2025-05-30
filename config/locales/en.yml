@@ -100,9 +100,13 @@ en:
       search: Search flights
       my_flights: My flights
       map: Map
+      stats: Stats
       profile: Profile
       change_password: Change password
       log_out: Log out
+  stats:
+    show:
+      title: Stats
   users:
     show:
       title: Profile

@@ -100,9 +100,13 @@ ru:
       search: Поиск рейсов
       my_flights: Мои рейсы
       map: Карта
+      stats: Статистика
       profile: Мой профиль
       change_password: Изменить пароль
       log_out: Выйти
+  stats:
+    show:
+      title: Статистика
   users:
     show:
       title: Мой профиль

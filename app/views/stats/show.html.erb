@@ -2,38 +2,69 @@
   <div class="col-lg-6 col-md-8 col-sm-10 col-12">
     <div class="stats p-4">
       <h1 class="text-center mb-3"><%= t('.title') %></h1>
+
       <div class="stat-card mb-2 p-3">
-        <h4 class="text-center"><%= t('.flights') %></h4>
+        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.flights') %></h4>
       </div>
+
       <div class="stat-card mb-2 p-3">
-        <h4 class="text-center"><%= t('.airports') %></h4>
-        <% @airports.each do |airport_name, country_code, count| %>
-          <div class="airport-row d-flex justify-content-between">
-            <div class="d-flex">
-              <p class="mb-0 pe-1"><%= airport_name %></p>
-              <img src="https://flagcdn.com/<%= country_code.downcase %>.svg" alt="<%= country_code %>">
-            </div>
-            <div>
-              <p><%= count %></p>
-            </div>
+        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.airports') %></h4>
+        <% @airports.each do |country_code, airport_code, airport_name, count| %>
+          <div class="card-row d-flex justify-content-between align-items-center border-bottom">
+            <img class="m-0" src="https://flagcdn.com/<%= country_code.downcase %>.svg" alt="<%= country_code %>">
+            <p class="m-0"><span><%= airport_code %></span> <%= airport_name %></p>
+            <p class="text-secondary m-0"><strong><%= count %></strong></p>
           </div>
         <% end %>
       </div>
+
       <div class="stat-card mb-2 p-3">
-        <h4 class="text-center"><%= t('.departure_airports') %></h4>
+        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.departure_airports') %></h4>
+        <% @departure_airports.each do |country_code, airport_code, airport_name, count| %>
+          <div class="card-row d-flex justify-content-between align-items-center border-bottom">
+            <img class="m-0" src="https://flagcdn.com/<%= country_code.downcase %>.svg" alt="<%= country_code %>">
+            <p class="m-0"><span><%= airport_code %></span> <%= airport_name %></p>
+            <p class="text-secondary m-0"><strong><%= count %></strong></p>
+          </div>
+        <% end %>
       </div>
+
       <div class="stat-card mb-2 p-3">
-        <h4 class="text-center"><%= t('.arrival_airports') %></h4>
+        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.arrival_airports') %></h4>
+        <% @arrival_airports.each do |country_code, airport_code, airport_name, count| %>
+          <div class="card-row d-flex justify-content-between align-items-center border-bottom">
+            <img class="m-0" src="https://flagcdn.com/<%= country_code.downcase %>.svg" alt="<%= country_code %>">
+            <p class="m-0"><span><%= airport_code %></span> <%= airport_name %></p>
+            <p class="text-secondary m-0"><strong><%= count %></strong></p>
+          </div>
+        <% end %>
       </div>
+
       <div class="stat-card mb-2 p-3">
-        <h4 class="text-center"><%= t('.airlines') %></h4>
+        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.airlines') %></h4>
+        <% @airlines.each do |airline_logo, airline_code, airline_name, count| %>
+          <div class="card-row d-flex justify-content-between align-items-center border-bottom">
+            <img class="m-0" src="<%= airline_logo %>" alt="<%= airline_name %>">
+            <p class="m-0"><span><%= airline_code %></span> <%= airline_name %></p>
+            <p class="text-secondary m-0"><strong><%= count %></strong></p>
+          </div>
+        <% end %>
       </div>
+
       <div class="stat-card mb-2 p-3">
-        <h4 class="text-center"><%= t('.aircrafts') %></h4>
+        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.aircrafts') %></h4>
+        <% @aircrafts.each do |aircraft_name, count| %>
+          <div class="card-row d-flex justify-content-between align-items-center border-bottom">
+            <p class="m-0"><%= aircraft_name %></p>
+            <p class="text-secondary m-0"><strong><%= count %></strong></p>
+          </div>
+        <% end %>
       </div>
+
       <div class="stat-card mb-2 p-3">
-        <h4 class="text-center"><%= t('.geo') %></h4>
+        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.geo') %></h4>
       </div>
+
     </div>
   </div>
 </div>

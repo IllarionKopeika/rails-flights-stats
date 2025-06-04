@@ -7,6 +7,9 @@
     border-radius: 25px;
     box-shadow: 2px 2px 4px gray;
     overflow: hidden;
+    .card-row:last-child {
+      border-bottom: none !important;
+    }
     h4 {
       color: $primary;
     }
@@ -15,19 +18,25 @@
       font-weight: 500;
     }
     img {
-      width: 30px;
-      height: 20px;
+      width: 27px;
+      height: 18px;
+      border-radius: 5px;
+      object-fit: contain;
+    }
+    span {
+      font-weight: bold;
+      color: $secondary;
     }
     @media (max-width: 576px) {
       h4 {
-        font-size: 18px;
+        font-size: 16px;
       }
       p {
-        font-size: 12px;
+        font-size: 10px;
       }
       img {
-        width: 22px;
-        height: 15px;
+        width: 21px;
+        height: 14px;
       }
     }
   }

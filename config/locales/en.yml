@@ -107,6 +107,15 @@ en:
   stats:
     show:
       title: Stats
+      zero_duration: 0 h 0 mins
+      km: km
+      flights: Flights
+      airports: Airports
+      departure_airports: Departure airports
+      arrival_airports: Arrival airports
+      airlines: Airlines
+      aircrafts: Aircrafts
+      geo: Geodata
   users:
     show:
       title: Profile

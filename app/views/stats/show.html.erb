@@ -2,6 +2,38 @@
   <div class="col-lg-6 col-md-8 col-sm-10 col-12">
     <div class="stats p-4">
       <h1 class="text-center mb-3"><%= t('.title') %></h1>
+      <div class="stat-card mb-2 p-3">
+        <h4 class="text-center"><%= t('.flights') %></h4>
+      </div>
+      <div class="stat-card mb-2 p-3">
+        <h4 class="text-center"><%= t('.airports') %></h4>
+        <% @airports.each do |airport_name, country_code, count| %>
+          <div class="airport-row d-flex justify-content-between">
+            <div class="d-flex">
+              <p class="mb-0 pe-1"><%= airport_name %></p>
+              <img src="https://flagcdn.com/<%= country_code.downcase %>.svg" alt="<%= country_code %>">
+            </div>
+            <div>
+              <p><%= count %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="stat-card mb-2 p-3">
+        <h4 class="text-center"><%= t('.departure_airports') %></h4>
+      </div>
+      <div class="stat-card mb-2 p-3">
+        <h4 class="text-center"><%= t('.arrival_airports') %></h4>
+      </div>
+      <div class="stat-card mb-2 p-3">
+        <h4 class="text-center"><%= t('.airlines') %></h4>
+      </div>
+      <div class="stat-card mb-2 p-3">
+        <h4 class="text-center"><%= t('.aircrafts') %></h4>
+      </div>
+      <div class="stat-card mb-2 p-3">
+        <h4 class="text-center"><%= t('.geo') %></h4>
+      </div>
     </div>
   </div>
 </div>

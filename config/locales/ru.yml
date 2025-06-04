@@ -107,6 +107,15 @@ ru:
   stats:
     show:
       title: Статистика
+      zero_duration: 0 ч 0 мин
+      km: км
+      flights: Полеты
+      airports: Аэропорты
+      departure_airports: Аэропорты вылета
+      arrival_airports: Аэропорты прилета
+      airlines: Авиалинии
+      aircrafts: Самолеты
+      geo: Геоданные
   users:
     show:
       title: Мой профиль

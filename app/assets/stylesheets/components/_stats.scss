@@ -2,4 +2,33 @@
   background: rgba(white,0.7);
   border: 1px solid $primary;
   border-radius: 5px;
+  .stat-card {
+    background: rgba(whitesmoke, 0.8);
+    border-radius: 25px;
+    box-shadow: 2px 2px 4px gray;
+    overflow: hidden;
+    h4 {
+      color: $primary;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    img {
+      width: 30px;
+      height: 20px;
+    }
+    @media (max-width: 576px) {
+      h4 {
+        font-size: 18px;
+      }
+      p {
+        font-size: 12px;
+      }
+      img {
+        width: 22px;
+        height: 15px;
+      }
+    }
+  }
 }

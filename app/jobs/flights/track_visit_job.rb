@@ -11,9 +11,7 @@ class Flights::TrackVisitJob < ApplicationJob
     region = subregion.region
 
     [country, subregion, region].each do |visitable|
-      visit = Visit.find_or_initialize_by(user: user, visitable: visitable)
-      visit.count += 1
-      visit.save!
+      Visit.find_or_create_by!(user: user, visitable: visitable)
     end
   end
 end

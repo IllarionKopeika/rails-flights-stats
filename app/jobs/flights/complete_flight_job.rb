@@ -20,9 +20,7 @@ class Flights::CompleteFlightJob < ApplicationJob
     arrival_airport = flight.arrival_airport
 
     [country, subregion, region].each do |visitable|
-      visit = Visit.find_or_initialize_by(user: user, visitable: visitable)
-      visit.count += 1
-      visit.save!
+      Visit.find_or_create_by!(user: user, visitable: visitable)
     end
 
     [aircraft, airline].each do |flightstatable|

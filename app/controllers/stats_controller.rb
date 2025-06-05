@@ -1,5 +1,10 @@
 class StatsController < ApplicationController
   def show
+    @longest_flight_min = Current.user.flights.where(status: :completed).order(duration: :desc).first
+    @shortest_flight_min = Current.user.flights.where(status: :completed).order(duration: :asc).first
+    @longest_flight_km = Current.user.flights.where(status: :completed).order(distance: :desc).first
+    @shortest_flight_km = Current.user.flights.where(status: :completed).order(distance: :asc).first
+
     @airports = Current.user.flight_stats
       .where(flightstatable_type: 'Airport', role: 'general')
       .map do |stat|

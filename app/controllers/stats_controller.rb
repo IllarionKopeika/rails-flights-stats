@@ -1,5 +1,7 @@
 class StatsController < ApplicationController
   def show
+    @average_duration = Current.user.flights.where(status: :completed).average(:duration).to_i
+    @average_distance = Current.user.flights.where(status: :completed).average(:distance).to_f.round(1)
     @longest_flight_min = Current.user.flights.where(status: :completed).order(duration: :desc).first
     @shortest_flight_min = Current.user.flights.where(status: :completed).order(duration: :asc).first
     @longest_flight_km = Current.user.flights.where(status: :completed).order(distance: :desc).first

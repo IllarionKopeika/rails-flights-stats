@@ -107,8 +107,6 @@ en:
   stats:
     show:
       title: Stats
-      zero_duration: 0 h 0 mins
-      km: km
       flights: Flights
       airports: Airports
       departure_airports: Departure airports
@@ -128,6 +126,14 @@ en:
     aircrafts:
       aircrafts: Aircrafts
       show_all: Show all
+    flights:
+      longest_flight_min: Max. duration
+      shortest_flight_min: Min. duration
+      average_flight_min: Av. duration
+      longest_flight_km: Max. distance
+      shortest_flight_km: Min. distance
+      average_flight_km: Av. distance
+      km: km
   users:
     show:
       title: Profile

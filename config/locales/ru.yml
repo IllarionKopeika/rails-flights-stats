@@ -107,8 +107,6 @@ ru:
   stats:
     show:
       title: Статистика
-      zero_duration: 0 ч 0 мин
-      km: км
       flights: Полеты
       airports: Аэропорты
       departure_airports: Аэропорты вылета
@@ -128,6 +126,14 @@ ru:
     aircrafts:
       aircrafts: Самолеты
       show_all: Показать все
+    flights:
+      longest_flight_min: Макс. продолжительность
+      shortest_flight_min: Мин. продолжительность
+      average_flight_min: Ср. продолжительность
+      longest_flight_km: Макс. дистанция
+      shortest_flight_km: Мин. дистанция
+      average_flight_km: Ср. дистанция
+      km: км
   users:
     show:
       title: Мой профиль

@@ -1,0 +1,33 @@
+<!-- duration -->
+<div class="card-row d-flex justify-content-between align-items-center border-bottom">
+  <p class="my-1 text-secondary"><strong><%= @longest_flight_min.departure_airport.code %> - <%= @longest_flight_min.arrival_airport.code %></strong></p>
+  <p class="my-1"><%= t('.longest_flight_min') %></p>
+  <p class="my-1 text-secondary"><strong><%= duration(@longest_flight_min.duration) %></strong></p>
+</div>
+<div class="card-row d-flex justify-content-between align-items-center border-bottom">
+  <p class="my-1 text-secondary"><strong><%= @shortest_flight_min.departure_airport.code %> - <%= @shortest_flight_min.arrival_airport.code %></strong></p>
+  <p class="my-1"><%= t('.shortest_flight_min') %></p>
+  <p class="my-1 text-secondary"><strong><%= duration(@shortest_flight_min.duration) %></strong></p>
+</div>
+<div class="card-row d-flex justify-content-between align-items-center border-bottom">
+  <i class="my-1 mx-4 stats-icon fa-solid fa-clock"></i>
+  <p class="my-1"><%= t('.average_flight_min') %></p>
+  <p class="my-1 text-secondary"><strong><%= duration(@average_duration) %></strong></p>
+</div>
+
+<!-- duration -->
+<div class="card-row d-flex justify-content-between align-items-center border-bottom">
+  <p class="my-1 text-secondary"><strong><%= @longest_flight_km.departure_airport.code %> - <%= @longest_flight_km.arrival_airport.code %></strong></p>
+  <p class="my-1"><%= t('.longest_flight_km') %></p>
+  <p class="my-1 text-secondary"><strong><%= @longest_flight_km.distance %> <%= t('.km') %></strong></p>
+</div>
+<div class="card-row d-flex justify-content-between align-items-center border-bottom">
+  <p class="my-1 text-secondary"><strong><%= @shortest_flight_km.departure_airport.code %> - <%= @shortest_flight_km.arrival_airport.code %></strong></p>
+  <p class="my-1"><%= t('.shortest_flight_km') %></p>
+  <p class="my-1 text-secondary"><strong><%= @shortest_flight_km.distance %> <%= t('.km') %></strong></p>
+</div>
+<div class="card-row d-flex justify-content-between align-items-center border-bottom">
+  <i class="my-1 mx-4 stats-icon fa-solid fa-route"></i>
+  <p class="my-1"><%= t('.average_flight_km') %></p>
+  <p class="my-1 text-secondary"><strong><%= @average_distance %> <%= t('.km') %></strong></p>
+</div>

@@ -5,26 +5,7 @@
 
       <div class="stat-card mb-2 p-3">
         <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.flights') %></h4>
-        <div class="card-row d-flex justify-content-between align-items-center border-bottom">
-          <p class="m-0 text-secondary"><strong><%= @longest_flight_min.departure_airport.code %> - <%= @longest_flight_min.arrival_airport.code %></strong></p>
-          <p class="m-0"><%= t('.longest_flight_min') %></p>
-          <p class="text-secondary m-0"><strong><%= duration(@longest_flight_min.duration) %></strong></p>
-        </div>
-        <div class="card-row d-flex justify-content-between align-items-center border-bottom">
-          <p class="m-0 text-secondary"><strong><%= @shortest_flight_min.departure_airport.code %> - <%= @shortest_flight_min.arrival_airport.code %></strong></p>
-          <p class="m-0"><%= t('.shortest_flight_min') %></p>
-          <p class="text-secondary m-0"><strong><%= duration(@shortest_flight_min.duration) %></strong></p>
-        </div>
-        <div class="card-row d-flex justify-content-between align-items-center border-bottom">
-          <p class="m-0 text-secondary"><strong><%= @longest_flight_km.departure_airport.code %> - <%= @longest_flight_km.arrival_airport.code %></strong></p>
-          <p class="m-0"><%= t('.longest_flight_km') %></p>
-          <p class="text-secondary m-0"><strong><%= @longest_flight_km.distance %> <%= t('.km') %></strong></p>
-        </div>
-        <div class="card-row d-flex justify-content-between align-items-center border-bottom">
-          <p class="m-0 text-secondary"><strong><%= @shortest_flight_km.departure_airport.code %> - <%= @shortest_flight_km.arrival_airport.code %></strong></p>
-          <p class="m-0"><%= t('.shortest_flight_km') %></p>
-          <p class="text-secondary m-0"><strong><%= @shortest_flight_km.distance %> <%= t('.km') %></strong></p>
-        </div>
+        <%= render 'flights' %>
       </div>
 
       <div class="stat-card mb-2 p-3">

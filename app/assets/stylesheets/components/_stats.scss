@@ -23,9 +23,9 @@
       border-radius: 5px;
       object-fit: contain;
     }
-    span {
-      font-weight: bold;
-      color: $secondary;
+    .aircraft-icon {
+      color: $info;
+      font-size: 14px;
     }
     @media (max-width: 576px) {
       h4 {
@@ -37,6 +37,9 @@
       img {
         width: 18px;
         height: 12px;
+      }
+      .aircraft-icon {
+        font-size: 10px;
       }
     }
   }

@@ -9,44 +9,17 @@
 
       <div class="stat-card mb-2 p-3">
         <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.airports') %></h4>
-        <% @airports.each do |country_code, airport_code, airport_name, count| %>
-          <div class="card-row d-flex justify-content-between align-items-center border-bottom">
-            <p class="m-0 text-secondary"><strong><%= airport_code %></strong></p>
-            <div class="d-flex justify-content-center align-items-center">
-              <p class="m-0 pe-1"><%= airport_name %></p>
-              <img class="m-0" src="https://flagcdn.com/<%= country_code.downcase %>.svg" alt="<%= country_code %>">
-            </div>
-            <p class="text-secondary m-0"><strong><%= count %></strong></p>
-          </div>
-        <% end %>
+        <%= render 'airports', object: @airports %>
       </div>
 
       <div class="stat-card mb-2 p-3">
         <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.departure_airports') %></h4>
-        <% @departure_airports.each do |country_code, airport_code, airport_name, count| %>
-          <div class="card-row d-flex justify-content-between align-items-center border-bottom">
-            <p class="m-0 text-secondary"><strong><%= airport_code %></strong></p>
-            <div class="d-flex justify-content-center align-items-center">
-              <p class="m-0 pe-1"><%= airport_name %></p>
-              <img class="m-0" src="https://flagcdn.com/<%= country_code.downcase %>.svg" alt="<%= country_code %>">
-            </div>
-            <p class="text-secondary m-0"><strong><%= count %></strong></p>
-          </div>
-        <% end %>
+        <%= render 'airports', object: @departure_airports %>
       </div>
 
       <div class="stat-card mb-2 p-3">
         <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.arrival_airports') %></h4>
-        <% @arrival_airports.each do |country_code, airport_code, airport_name, count| %>
-          <div class="card-row d-flex justify-content-between align-items-center border-bottom">
-            <p class="m-0 text-secondary"><strong><%= airport_code %></strong></p>
-            <div class="d-flex justify-content-center align-items-center">
-              <p class="m-0 pe-1"><%= airport_name %></p>
-              <img class="m-0" src="https://flagcdn.com/<%= country_code.downcase %>.svg" alt="<%= country_code %>">
-            </div>
-            <p class="text-secondary m-0"><strong><%= count %></strong></p>
-          </div>
-        <% end %>
+        <%= render 'airports', object: @arrival_airports %>
       </div>
 
       <div class="stat-card mb-2 p-3">
@@ -68,7 +41,10 @@
         <% @aircrafts.each do |aircraft_code, aircraft_name, count| %>
           <div class="card-row d-flex justify-content-between align-items-center border-bottom">
             <p class="m-0 text-secondary"><strong><%= aircraft_code %></strong></p>
-            <p class="m-0"><%= aircraft_name %></p>
+            <div class="d-flex justify-content-center align-items-center">
+              <p class="m-0 pe-1"><%= aircraft_name %></p>
+              <i class="aircraft-icon fa-solid fa-plane"></i>
+            </div>
             <p class="text-secondary m-0"><strong><%= count %></strong></p>
           </div>
         <% end %>

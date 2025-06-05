@@ -116,6 +116,18 @@ en:
       airlines: Airlines
       aircrafts: Aircrafts
       geo: Geodata
+      show_all: Show all
+    airports:
+      airports: Airports
+      departure_airports: Departure airports
+      arrival_airports: Arrival airports
+      show_all: Show all
+    airlines:
+      airlines: Airlines
+      show_all: Show all
+    aircrafts:
+      aircrafts: Aircrafts
+      show_all: Show all
   users:
     show:
       title: Profile

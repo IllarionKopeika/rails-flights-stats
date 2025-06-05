@@ -27,6 +27,11 @@
       color: $info;
       font-size: 14px;
     }
+    a {
+      text-decoration: none;
+      color: $primary;
+      font-size: 14px;
+    }
     @media (max-width: 576px) {
       h4 {
         font-size: 16px;
@@ -40,6 +45,9 @@
       }
       .aircraft-icon {
         font-size: 10px;
+      }
+      a{
+        font-size: 12px;
       }
     }
   }

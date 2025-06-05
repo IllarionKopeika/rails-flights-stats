@@ -116,6 +116,18 @@ ru:
       airlines: Авиалинии
       aircrafts: Самолеты
       geo: Геоданные
+      show_all: Показать все
+    airports:
+      airports: Аэропорты
+      departure_airports: Аэропорты вылета
+      arrival_airports: Аэропорты прилета
+      show_all: Показать все
+    airlines:
+      airlines: Авиалинии
+      show_all: Показать все
+    aircrafts:
+      aircrafts: Самолеты
+      show_all: Показать все
   users:
     show:
       title: Мой профиль

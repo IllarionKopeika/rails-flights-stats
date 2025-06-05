@@ -36,8 +36,8 @@ class StatsController < ApplicationController
         .where(flightstatable_type: 'Aircraft')
         .map do |stat|
           aircraft = Aircraft.find(stat.flightstatable_id)
-          [ aircraft.name, stat.count ]
+          [ aircraft.code, aircraft.name, stat.count ]
         end
-        .sort_by { |name, count| [ -count, name.downcase ] }
+        .sort_by { |_, name, count| [ -count, name.downcase ] }
   end
 end

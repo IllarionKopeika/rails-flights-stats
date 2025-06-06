@@ -29,4 +29,12 @@ module ApplicationHelper
     arrival_date = Date.parse(arrival)
     arrival_date > departure_date
   end
+
+  def around_earth(total_distance)
+    (total_distance / 40075).round(2)
+  end
+
+  def to_moon(total_distance)
+    (total_distance / 384400).round(2)
+  end
 end

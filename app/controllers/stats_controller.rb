@@ -1,11 +1,14 @@
 class StatsController < ApplicationController
   def show
-    @average_duration = Current.user.flights.where(status: :completed).average(:duration).to_i
-    @average_distance = Current.user.flights.where(status: :completed).average(:distance).to_f.round(1)
-    @longest_flight_min = Current.user.flights.where(status: :completed).order(duration: :desc).first
-    @shortest_flight_min = Current.user.flights.where(status: :completed).order(duration: :asc).first
+    @total_distance = Current.user.flights.where(status: :completed).sum(:distance).round(1)
     @longest_flight_km = Current.user.flights.where(status: :completed).order(distance: :desc).first
     @shortest_flight_km = Current.user.flights.where(status: :completed).order(distance: :asc).first
+    @average_distance = Current.user.flights.where(status: :completed).average(:distance).to_f.round(1)
+
+    @total_duration = Current.user.flights.where(status: :completed).sum(:duration)
+    @longest_flight_min = Current.user.flights.where(status: :completed).order(duration: :desc).first
+    @shortest_flight_min = Current.user.flights.where(status: :completed).order(duration: :asc).first
+    @average_duration = Current.user.flights.where(status: :completed).average(:duration).to_i
 
     @airports = Current.user.flight_stats
       .where(flightstatable_type: 'Airport', role: 'general')
@@ -43,8 +46,8 @@ class StatsController < ApplicationController
         .where(flightstatable_type: 'Aircraft')
         .map do |stat|
           aircraft = Aircraft.find(stat.flightstatable_id)
-          [ aircraft.code, aircraft.name, stat.count ]
+          [ aircraft.name, stat.count ]
         end
-        .sort_by { |_, name, count| [ -count, name.downcase ] }
+        .sort_by { |name, count| [ -count, name.downcase ] }
   end
 end

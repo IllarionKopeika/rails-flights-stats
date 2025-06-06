@@ -1,10 +1,7 @@
-<% @aircrafts.first(5).each do |aircraft_code, aircraft_name, count| %>
+<% @aircrafts.first(5).each do |aircraft_name, count| %>
   <div class="card-row d-flex justify-content-between align-items-center border-bottom">
-    <p class="my-1 text-secondary"><strong><%= aircraft_code %></strong></p>
-    <div class="d-flex justify-content-center align-items-center">
-      <p class="my-1 pe-1"><%= aircraft_name %></p>
-      <i class="my-1 stats-icon fa-solid fa-plane"></i>
-    </div>
+    <i class="my-1 stats-icon fa-solid fa-plane"></i>
+    <p class="my-1"><%= aircraft_name %></p>
     <p class="my-1 text-secondary"><strong><%= count %></strong></p>
   </div>
 <% end %>
@@ -21,13 +18,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <% @aircrafts.each do |aircraft_code, aircraft_name, count| %>
+        <% @aircrafts.each do |aircraft_name, count| %>
           <div class="card-row d-flex justify-content-between align-items-center border-bottom">
-            <p class="my-1 text-secondary"><strong><%= aircraft_code %></strong></p>
-            <div class="d-flex justify-content-center align-items-center">
-              <p class="my-1 pe-1"><%= aircraft_name %></p>
-              <i class="my-1 stats-icon fa-solid fa-plane"></i>
-            </div>
+            <i class="my-1 stats-icon fa-solid fa-plane"></i>
+            <p class="my-1"><%= aircraft_name %></p>
             <p class="my-1 text-secondary"><strong><%= count %></strong></p>
           </div>
         <% end %>

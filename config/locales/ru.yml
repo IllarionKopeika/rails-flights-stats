@@ -127,13 +127,26 @@ ru:
       aircrafts: Самолеты
       show_all: Показать все
     flights:
-      longest_flight_min: Макс. продолжительность
-      shortest_flight_min: Мин. продолжительность
-      average_flight_min: Ср. продолжительность
-      longest_flight_km: Макс. дистанция
-      shortest_flight_km: Мин. дистанция
-      average_flight_km: Ср. дистанция
+      total_flight_km: Общ. дальность
+      average_flight_km: Ср. дальность
+      around_earth: Вокруг Земли
+      to_moon: до Луны
       km: км
+      total_flight_min: Общ. время
+      show_all: Показать все
+    flights_modal:
+      flights: Полеты
+      total_flight_km: Общ. дальность
+      longest_flight_km: Макс. дальность
+      average_flight_km: Ср. дальность
+      around_earth: Вокруг Земли
+      to_moon: до Луны
+      km: км
+      total_flight_min: Общ. время
+      longest_flight_min: Макс. время
+      shortest_flight_min: Мин. время
+      shortest_flight_km: Мин. дальность
+      average_flight_min: Ср. время
   users:
     show:
       title: Мой профиль

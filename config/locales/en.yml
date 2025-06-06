@@ -127,13 +127,26 @@ en:
       aircrafts: Aircrafts
       show_all: Show all
     flights:
+      total_flight_km: Total distance
+      average_flight_km: Av. distance
+      around_earth: Around Earth
+      to_moon: To the Moon
+      km: km
+      total_flight_min: Total duration
+      show_all: Show all
+    flights_modal:
+      flights: Flights
+      total_flight_km: Total distance
+      longest_flight_km: Max. distance
+      average_flight_km: Av. distance
+      around_earth: Around Earth
+      to_moon: To the Moon
+      km: km
+      total_flight_min: Total duration
       longest_flight_min: Max. duration
+      shortest_flight_km: Min. distance
       shortest_flight_min: Min. duration
       average_flight_min: Av. duration
-      longest_flight_km: Max. distance
-      shortest_flight_km: Min. distance
-      average_flight_km: Av. distance
-      km: km
   users:
     show:
       title: Profile

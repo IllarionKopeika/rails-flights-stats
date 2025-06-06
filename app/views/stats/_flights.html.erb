@@ -1,33 +1,64 @@
-<!-- duration -->
-<div class="card-row d-flex justify-content-between align-items-center border-bottom">
-  <p class="my-1 text-secondary"><strong><%= @longest_flight_min.departure_airport.code %> - <%= @longest_flight_min.arrival_airport.code %></strong></p>
-  <p class="my-1"><%= t('.longest_flight_min') %></p>
-  <p class="my-1 text-secondary"><strong><%= duration(@longest_flight_min.duration) %></strong></p>
+<!-- distance -->
+<div class="row card-row border-bottom">
+  <div class="col d-flex justify-content-start align-items-center">
+    <i class="my-1 stats-icon fa-solid fa-calculator"></i>
+  </div>
+  <div class="col d-flex justify-content-center align-items-center">
+    <p class="my-1" id="total-flight-km"><%= t('.total_flight_km') %></p>
+  </div>
+  <div class="col d-flex justify-content-end align-items-center">
+    <p class="my-1 text-secondary"><strong><%= @total_distance %> <%= t('.km') %></strong></p>
+  </div>
 </div>
-<div class="card-row d-flex justify-content-between align-items-center border-bottom">
-  <p class="my-1 text-secondary"><strong><%= @shortest_flight_min.departure_airport.code %> - <%= @shortest_flight_min.arrival_airport.code %></strong></p>
-  <p class="my-1"><%= t('.shortest_flight_min') %></p>
-  <p class="my-1 text-secondary"><strong><%= duration(@shortest_flight_min.duration) %></strong></p>
+<div class="row card-row border-bottom">
+  <div class="col d-flex justify-content-start align-items-center">
+    <i class="my-1 stats-icon fa-solid fa-route"></i>
+  </div>
+  <div class="col d-flex justify-content-center align-items-center">
+    <p class="my-1"><%= t('.average_flight_km') %></p>
+  </div>
+  <div class="col d-flex justify-content-end align-items-center">
+    <p class="my-1 text-secondary"><strong><%= @average_distance %> <%= t('.km') %></strong></p>
+  </div>
 </div>
-<div class="card-row d-flex justify-content-between align-items-center border-bottom">
-  <i class="my-1 mx-4 stats-icon fa-solid fa-clock"></i>
-  <p class="my-1"><%= t('.average_flight_min') %></p>
-  <p class="my-1 text-secondary"><strong><%= duration(@average_duration) %></strong></p>
+<div class="row card-row border-bottom">
+  <div class="col d-flex justify-content-start align-items-center">
+    <i class="my-1 stats-icon fa-solid fa-globe"></i>
+  </div>
+  <div class="col d-flex justify-content-center align-items-center">
+    <p class="my-1"><%= t('.around_earth') %></p>
+  </div>
+  <div class="col d-flex justify-content-end align-items-center">
+    <p class="my-1 text-secondary"><strong><%= around_earth(@total_distance) %></strong></p>
+  </div>
+</div>
+<div class="row card-row border-bottom">
+  <div class="col d-flex justify-content-start align-items-center">
+    <i class="my-1 stats-icon fa-solid fa-moon"></i>
+  </div>
+  <div class="col d-flex justify-content-center align-items-center">
+    <p class="my-1"><%= t('.to_moon') %></p>
+  </div>
+  <div class="col d-flex justify-content-end align-items-center">
+    <p class="my-1 text-secondary"><strong><%= to_moon(@total_distance) %></strong></p>
+  </div>
 </div>
 
 <!-- duration -->
-<div class="card-row d-flex justify-content-between align-items-center border-bottom">
-  <p class="my-1 text-secondary"><strong><%= @longest_flight_km.departure_airport.code %> - <%= @longest_flight_km.arrival_airport.code %></strong></p>
-  <p class="my-1"><%= t('.longest_flight_km') %></p>
-  <p class="my-1 text-secondary"><strong><%= @longest_flight_km.distance %> <%= t('.km') %></strong></p>
+<div class="row card-row border-bottom">
+  <div class="col d-flex justify-content-start align-items-center">
+    <i class="my-1 stats-icon fa-solid fa-clock"></i>
+  </div>
+  <div class="col d-flex justify-content-center align-items-center">
+    <p class="my-1"><%= t('.total_flight_min') %></p>
+  </div>
+  <div class="col d-flex justify-content-end align-items-center">
+    <p class="my-1 text-secondary"><strong><%= duration(@total_duration) %></strong></p>
+  </div>
 </div>
-<div class="card-row d-flex justify-content-between align-items-center border-bottom">
-  <p class="my-1 text-secondary"><strong><%= @shortest_flight_km.departure_airport.code %> - <%= @shortest_flight_km.arrival_airport.code %></strong></p>
-  <p class="my-1"><%= t('.shortest_flight_km') %></p>
-  <p class="my-1 text-secondary"><strong><%= @shortest_flight_km.distance %> <%= t('.km') %></strong></p>
+
+<div class="d-flex justify-content-center align-items-center mt-1">
+  <%= link_to t('.show_all'), "#", data: { bs_toggle: 'modal', bs_target: "#flightsModal" } %>
 </div>
-<div class="card-row d-flex justify-content-between align-items-center border-bottom">
-  <i class="my-1 mx-4 stats-icon fa-solid fa-route"></i>
-  <p class="my-1"><%= t('.average_flight_km') %></p>
-  <p class="my-1 text-secondary"><strong><%= @average_distance %> <%= t('.km') %></strong></p>
-</div>
+
+<%= render 'flights_modal' %>

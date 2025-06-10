@@ -113,7 +113,10 @@ en:
       arrival_airports: Arrival airports
       airlines: Airlines
       aircrafts: Aircrafts
-      geo: Geodata
+      countries: Countries
+      subregions: Regions
+      regions: Continents
+      no_data: No data :(
       show_all: Show all
     airports:
       airports: Airports
@@ -147,6 +150,9 @@ en:
       shortest_flight_km: Min. distance
       shortest_flight_min: Min. duration
       average_flight_min: Av. duration
+    countries:
+      countries: Countries
+      show_all: Show all
   users:
     show:
       title: Profile

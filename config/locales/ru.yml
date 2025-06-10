@@ -113,7 +113,10 @@ ru:
       arrival_airports: Аэропорты прилета
       airlines: Авиалинии
       aircrafts: Самолеты
-      geo: Геоданные
+      countries: Страны
+      subregions: Регионы
+      regions: Континенты
+      no_data: Нет данных :(
       show_all: Показать все
     airports:
       airports: Аэропорты
@@ -147,6 +150,9 @@ ru:
       shortest_flight_min: Мин. время
       shortest_flight_km: Мин. дальность
       average_flight_min: Ср. время
+    countries:
+      countries: Страны
+      show_all: Показать все
   users:
     show:
       title: Мой профиль

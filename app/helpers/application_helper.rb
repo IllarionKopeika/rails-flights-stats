@@ -12,10 +12,10 @@ module ApplicationHelper
   def duration(elapsed_time)
     return I18n.t('flights.not_available') if elapsed_time.is_a?(String)
 
-    hours, mins = elapsed_time.divmod(60)
+    hours, mins = elapsed_time&.divmod(60)
     parts = []
-    parts << "#{hours} #{I18n.t('flights.hours')}" if hours.positive?
-    parts << "#{mins} #{I18n.t('flights.mins')}" if mins.positive?
+    parts << "#{hours} #{I18n.t('flights.hours')}" if hours&.positive?
+    parts << "#{mins} #{I18n.t('flights.mins')}" if mins&.positive?
     parts.join(" ")
   end
 

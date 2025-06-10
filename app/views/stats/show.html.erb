@@ -5,36 +5,75 @@
 
       <div class="stat-card mb-2 p-3">
         <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.flights') %></h4>
-        <%= render 'flights' %>
+        <% if @flights.empty? %>
+          <p class="text-center"><%= t('.no_data') %></p>
+        <% else %>
+          <%= render 'flights' %>
+        <% end %>
       </div>
 
       <div class="stat-card mb-2 p-3">
         <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.airports') %></h4>
-        <%= render 'airports', object: @airports, modal_id: 'allAirportsModal', title_key: '.airports' %>
+        <% if @airports.empty? %>
+          <p class="text-center"><%= t('.no_data') %></p>
+        <% else %>
+          <%= render 'airports', object: @airports, modal_id: 'allAirportsModal', title_key: '.airports' %>
+        <% end %>
       </div>
 
       <div class="stat-card mb-2 p-3">
         <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.departure_airports') %></h4>
-        <%= render 'airports', object: @departure_airports, modal_id: 'departureAirportsModal', title_key: '.departure_airports' %>
+        <% if @departure_airports.empty? %>
+          <p class="text-center"><%= t('.no_data') %></p>
+        <% else %>
+          <%= render 'airports', object: @departure_airports, modal_id: 'departureAirportsModal', title_key: '.departure_airports' %>
+        <% end %>
       </div>
 
       <div class="stat-card mb-2 p-3">
         <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.arrival_airports') %></h4>
-        <%= render 'airports', object: @arrival_airports, modal_id: 'arrivalAirportsModal', title_key: '.arrival_airports' %>
+        <% if @arrival_airports.empty? %>
+          <p class="text-center"><%= t('.no_data') %></p>
+        <% else %>
+          <%= render 'airports', object: @arrival_airports, modal_id: 'arrivalAirportsModal', title_key: '.arrival_airports' %>
+        <% end %>
       </div>
 
       <div class="stat-card mb-2 p-3">
         <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.airlines') %></h4>
-        <%= render 'airlines', title_key: '.airlines'  %>
+        <% if @airlines.empty? %>
+          <p class="text-center"><%= t('.no_data') %></p>
+        <% else %>
+          <%= render 'airlines', title_key: '.airlines'  %>
+        <% end %>
       </div>
 
       <div class="stat-card mb-2 p-3">
         <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.aircrafts') %></h4>
-        <%= render 'aircrafts', title_key: '.aircrafts'  %>
+        <% if @aircrafts.empty? %>
+          <p class="text-center"><%= t('.no_data') %></p>
+        <% else %>
+          <%= render 'aircrafts', title_key: '.aircrafts'  %>
+        <% end %>
       </div>
 
       <div class="stat-card mb-2 p-3">
-        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.geo') %></h4>
+        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.countries') %></h4>
+        <% if @countries.empty? %>
+          <p class="text-center"><%= t('.no_data') %></p>
+        <% else %>
+          <%= render 'countries', title_key: '.countries' %>
+        <% end %>
+      </div>
+
+      <div class="stat-card mb-2 p-3">
+        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.subregions') %></h4>
+        <p class="text-center"><%= t('.no_data') %></p>
+      </div>
+
+      <div class="stat-card mb-2 p-3">
+        <h4 class="text-center mb-2 border-bottom border-primary"><%= t('.regions') %></h4>
+        <p class="text-center"><%= t('.no_data') %></p>
       </div>
 
     </div>

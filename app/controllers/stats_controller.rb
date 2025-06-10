@@ -1,5 +1,6 @@
 class StatsController < ApplicationController
   def show
+    @flights = Current.user.flights
     @total_distance = Current.user.flights.where(status: :completed).sum(:distance).round(1)
     @longest_flight_km = Current.user.flights.where(status: :completed).order(distance: :desc).first
     @shortest_flight_km = Current.user.flights.where(status: :completed).order(distance: :asc).first
@@ -49,5 +50,12 @@ class StatsController < ApplicationController
           [ aircraft.name, stat.count ]
         end
         .sort_by { |name, count| [ -count, name.downcase ] }
+
+      @countries = Current.user.visits
+        .where(visitable_type: 'Country')
+        .map do |visit|
+          country = Country.find(visit.visitable_id)
+          [ country.code, country.name ]
+        end
   end
 end

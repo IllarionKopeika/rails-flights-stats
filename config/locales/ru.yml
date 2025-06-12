@@ -114,8 +114,7 @@ ru:
       airlines: Авиалинии
       aircrafts: Самолеты
       countries: Страны
-      subregions: Регионы
-      regions: Континенты
+      regions_and_subregions: Регионы и континенты
       no_data: Нет данных :(
       show_all: Показать все
     airports:

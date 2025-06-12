@@ -27,6 +27,12 @@
       color: $secondary;
       font-size: 14px;
     }
+    #check-icon {
+      color: $success;
+    }
+    #xmark-icon {
+      color: $danger;
+    }
     a {
       text-decoration: none;
       color: $primary;
@@ -44,7 +50,7 @@
         width: 18px;
         height: 12px;
       }
-      .aircraft-icon {
+      .stats-icon {
         font-size: 10px;
       }
       a{

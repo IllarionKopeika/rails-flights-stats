@@ -114,8 +114,7 @@ en:
       airlines: Airlines
       aircrafts: Aircrafts
       countries: Countries
-      subregions: Regions
-      regions: Continents
+      regions_and_subregions: Regions & Continents
       no_data: No data :(
       show_all: Show all
     airports:

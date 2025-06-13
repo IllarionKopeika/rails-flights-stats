@@ -1,11 +1,32 @@
-<% @regions.each do |region_name, visited| %>
+<% @regions.each do |region| %>
   <div class="card-row d-flex justify-content-between align-items-center border-bottom">
     <i class="my-1 stats-icon fa-solid fa-book-atlas"></i>
-    <p class="my-1"><%= region_name[I18n.locale.to_s] %></p>
-    <% if visited == true %>
+    <p class="my-1"><%= link_to region[:name][I18n.locale.to_s], '#', class: 'continent-link', data: { bs_toggle: 'modal', bs_target: "##{region[:name]['en'].parameterize}Modal" } %></p>
+    <% if region[:visited] %>
       <i class="my-1 stats-icon fa-regular fa-circle-check" id="check-icon"></i>
     <% else %>
       <i class="my-1 stats-icon fa-regular fa-circle-xmark" id="xmark-icon"></i>
     <% end %>
   </div>
+
+  <div class="modal fade" id="<%= region[:name]['en'].parameterize %>Modal" tabindex="-1" aria-labelledby="<%= region[:name]['en'].parameterize %>ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header pb-0" style="border-bottom: none;">
+          <h4 class="modal-title fs-5" id="<%= region[:name]['en'].parameterize %>ModalLabel"><%= region[:name][I18n.locale.to_s] %></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <% region[:subregions].each do |sub| %>
+            <div class="card-row d-flex justify-content-between align-items-center border-bottom">
+              <i class="my-1 stats-icon fa-solid fa-book-atlas"></i>
+              <p class="my-1"><%= sub[:name][I18n.locale.to_s] %></p>
+              <p class="my-1 text-secondary"><strong><%= "#{sub[:visited]}/#{sub[:total]}" %></strong></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <% end %>

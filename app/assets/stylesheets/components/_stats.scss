@@ -39,6 +39,13 @@
       font-size: 16px;
       font-weight: bold;
     }
+    a.continent-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: #212529;
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
+    }
     @media (max-width: 576px) {
       h4 {
         font-size: 16px;
@@ -55,6 +62,9 @@
       }
       a{
         font-size: 12px;
+      }
+      a.continent-link {
+        font-size: 10px;
       }
     }
   }

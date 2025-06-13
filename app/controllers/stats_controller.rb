@@ -68,13 +68,28 @@ class StatsController < ApplicationController
         [ country.code, country.name ]
       end
 
-    # continents
-    visited_region_ids = Current.user.visits
-      .where(visitable_type: 'Region')
+    # continents & regions
+    visited_country_ids = Current.user.visits
+      .where(visitable_type: 'Country')
       .pluck(:visitable_id)
       .to_set
-    @regions = Region.all.map do |region|
-      [ region.name, visited_region_ids.include?(region.id) ]
+    @regions = Region.includes(subregions: :countries).map do |region|
+      subregions_data = region.subregions.map do |subregion|
+        total_countries = subregion.countries.count
+        visited_countries = subregion.countries.where(id: visited_country_ids).count
+        {
+          name: subregion.name,
+          total: total_countries,
+          visited: visited_countries
+        }
+      end
+
+      {
+        name: region.name,
+        visited: Current.user.visits.exists?(visitable: region),
+        subregions: subregions_data
+      }
     end
+    Rails.logger.debug "REGIONS >>> #{@regions}"
   end
 end

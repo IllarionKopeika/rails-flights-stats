@@ -20,27 +20,27 @@ class StatsController < ApplicationController
       .where(flightstatable_type: 'Airport', role: 'general')
       .map do |stat|
         airport = Airport.find(stat.flightstatable_id)
-        [ airport.code, airport.name, stat.count ]
+        [ airport.country.code, airport.code, airport.name, stat.count ]
       end
-      .sort_by { |_, name, count| [ -count, name.downcase ] }
+      .sort_by { |_, _, name, count| [ -count, name.downcase ] }
 
     # departure airports
     @departure_airports = Current.user.flight_stats
       .where(flightstatable_type: 'Airport', role: 'departure')
       .map do |stat|
         departure_airport = Airport.find(stat.flightstatable_id)
-        [ departure_airport.code, departure_airport.name, stat.count ]
+        [ departure_airport.country.code, departure_airport.code, departure_airport.name, stat.count ]
       end
-      .sort_by { |_, name, count| [ -count, name.downcase ] }
+      .sort_by { |_, _, name, count| [ -count, name.downcase ] }
 
     # arrival airports
     @arrival_airports = Current.user.flight_stats
       .where(flightstatable_type: 'Airport', role: 'arrival')
       .map do |stat|
         arrival_airport = Airport.find(stat.flightstatable_id)
-        [ arrival_airport.code, arrival_airport.name, stat.count ]
+        [ arrival_airport.country.code, arrival_airport.code, arrival_airport.name, stat.count ]
       end
-      .sort_by { |_, name, count| [ -count, name.downcase ] }
+      .sort_by { |_, _, name, count| [ -count, name.downcase ] }
 
     # airlines
     @airlines = Current.user.flight_stats

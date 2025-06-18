@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
   def show
     @user = Current.user
+    completed_flights = @user.flights.where(status: :completed)
+    @flights = completed_flights.count
+    @distance = completed_flights.sum(:distance).round(1)
+    @duration = completed_flights.sum(:duration)
   end
 
   def new

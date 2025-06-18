@@ -2,4 +2,13 @@
   background: rgba(white,0.7);
   border: 1px solid $primary;
   border-radius: 5px;
+  .traveler-id {
+    background: rgba(whitesmoke, 0.8);
+    border-radius: 25px;
+    box-shadow: 2px 2px 4px gray;
+    overflow: hidden;
+    h4 {
+      color: $primary;
+    }
+  }
 }

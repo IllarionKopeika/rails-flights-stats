@@ -155,11 +155,18 @@ en:
   users:
     show:
       title: Profile
-      traveler_id: Traveler ID
-      flights: Flights
-      distance: Distance
-      duration: Duration
+      name: Name
+      flights: FLIGHTS
+      international: INTERNATIONAL
+      domestic: DOMESTIC
+      distance: DISTANCE
+      duration: DURATION
       km: km
+      airports: AIRPORTS
+      airlines: AIRLINES
+      aircrafts: AIRCRAFTS
+      countries: COUNTRIES
+      regions: CONTINENTS
     new:
       already_signed_up: You're already signed up!
       title: Sign up

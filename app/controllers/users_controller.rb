@@ -3,10 +3,14 @@ class UsersController < ApplicationController
 
   def show
     @user = Current.user
+    @stats = @user.general_stat
     completed_flights = @user.flights.where(status: :completed)
-    @flights = completed_flights.count
-    @distance = completed_flights.sum(:distance).round(1)
-    @duration = completed_flights.sum(:duration)
+    @airports = completed_flights.pluck(:departure_airport_id, :arrival_airport_id).flatten.uniq.count
+    @airlines = completed_flights.select(:airline_id).distinct.count
+    @aircrafts = completed_flights.select(:aircraft_id).distinct.count
+    visits = @user.visits
+    @countries = visits.where(visitable_type: 'Country').select(:visitable_id).distinct.count
+    @regions = visits.where(visitable_type: 'Region').select(:visitable_id).distinct.count
   end
 
   def new

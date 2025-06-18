@@ -2,17 +2,36 @@
   <div class="col-lg-6 col-md-8 col-sm-10 col-12">
     <div class="profile p-4">
       <h1 class="text-center mb-3"><%= t('.title') %></h1>
-      <div class="traveler-id mb-2 p-3">
-        <h4 class="text-center mb-2"><%= t('.traveler_id') %></h4>
-        <div class="d-flex justify-content-evenly align-items-center">
-          <div>
-            <%= image_tag('logo.png', alt: 'logo', width: 100, height: 100) %>
+      <div class="traveler-id p-4 text-white">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="mb-0">Oh My Jetlag! ID</h4>
+          <%= image_tag('logo.png', alt: 'logo', width: 50) %>
+        </div>
+
+        <div class="passport-info mb-3">
+          <div class="d-flex justify-content-between">
+            <div><%= t('.flights') %>: <strong><%= @stats.total_flights %></strong></div>
+            <div><%= t('.distance') %>: <strong><%= @stats.total_distance %> <%= t('.km') %></strong></div>
           </div>
-          <div>
-            <h6 class="my-1"><strong><%= t('.flights') %>: <%= @flights %></strong></h6>
-            <h6 class="my-1"><strong><%= t('.distance') %>: <%= @distance %> <%= t('.km') %></strong></h6>
-            <h6 class="my-1"><strong><%= t('.duration') %>: <%= @duration %></strong></h6>
+          <div class="d-flex justify-content-between">
+            <div><%= t('.duration') %>: <strong><%= duration(@stats.total_duration) %></strong></div>
+            <div><%= t('.airlines') %>: <strong><%= @airlines %></strong></div>
           </div>
+          <div class="d-flex justify-content-between">
+            <div><%= t('.airports') %>: <strong><%= @airports %></strong></div>
+            <div><%= t('.aircrafts') %>: <strong><%= @aircrafts %></strong></div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div><%= t('.countries') %>: <strong><%= @countries %></strong></div>
+            <div><%= t('.regions') %>: <strong><%= @regions %></strong></div>
+          </div>
+        </div>
+
+        <div class="text-center small-text">
+          <div>Member since <%= l(@user.created_at.to_date, format: :long) %></div>
+          <div>Issued <%= l(Date.current, format: :long) %> at PVG</div>
+          <div class="mt-1"><code>ID: <%= @user.name || "user_#{@user.id}" %></code></div>
         </div>
       </div>
     </div>

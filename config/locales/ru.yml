@@ -155,11 +155,18 @@ ru:
   users:
     show:
       title: Мой профиль
-      traveler_id: ID путешественника
-      flights: Полеты
-      distance: Дальность
-      duration: Время
+      name: Имя
+      flights: ПОЛЕТЫ
+      international: МЕЖДУНАРОДНЫЕ
+      domestic: ВНУТРЕННИЕ
+      distance: ДАЛЬНОСТЬ
+      duration: ВРЕМЯ
       km: км
+      airports: АЭРОПОРТЫ
+      airlines: АВИАЛИНИИ
+      aircrafts: САМОЛЕТЫ
+      countries: СТРАНЫ
+      regions: КОНТИНЕНТЫ
     new:
       already_signed_up: Вы уже зарегистрированы!
       title: Регистрация
